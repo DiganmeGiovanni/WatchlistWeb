@@ -1,45 +1,75 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Greet from "./Greet";
 import SidebarItem from "./SidebarItem";
+import PropTypes from "prop-types";
 
-class Sidebar extends Component {
+const Sidebar = ({ user, lists }) => {
 
-    static makeListsItems() {
-        return [
-            <SidebarItem
-                title="Bienvenido"
-                active={ true }
-                key="item-welcome"
-            />
-        ]
-    }
-
-    static makeLinks() {
+    const makeExtraLinks = () => {
         return [
             <SidebarItem title="Recomendaciones" key="item-suggestions"/>,
             <SidebarItem title="Próximos estrenos" key="item-incoming"/>,
             <SidebarItem title="Generos" key="item-genres"/>
         ];
-    }
+    };
 
-    render() {
-        return (
-            <div className="sidebar">
-                <Greet/>
-                { Sidebar.makeListsItems() }
+    const makeListsItems = () => {
+        if (!user) {
+            return [
+                <SidebarItem
+                    title="Bienvenido"
+                    active={ true }
+                    key="item-welcome"
+                />
+            ];
+        }
 
-                <div className="text-center pt-5">
-                    <button className="btn btn-primary">
-                        Crear una lista
-                    </button>
+        return lists.map((list, idx) => (
+            <SidebarItem
+                title={ list.name }
+                active={ list.is_default_list }
+                key={`list-${ idx }`}
+            />
+        ))
+    };
 
-                    <hr/>
-                </div>
+    const makeCreateListBtn = () => {
+        return <div className="text-center pt-5">
+            <button className={`btn btn-primary ${ user ? '' : 'd-none'}`}
+                    disabled={ !user }
+            >
+                Crear una lista
+            </button>
 
-                { Sidebar.makeLinks() }
-            </div>
-        )
-    }
-}
+            <hr/>
+        </div>
+    };
+
+    return (
+        <div className="sidebar">
+            <Greet activeUser={ user }/>
+
+            { makeListsItems() }
+            { makeCreateListBtn() }
+            { makeExtraLinks() }
+        </div>
+    )
+};
+
+Sidebar.propTypes = {
+    user: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired,
+        updated_at: PropTypes.string.isRequired
+    }),
+    lists: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        is_default_list: PropTypes.bool.isRequired
+    }))
+};
 
 export default Sidebar;

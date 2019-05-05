@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import defAvatar from '../../../img/avatar.png';
 
-function Greet({ activeUser }) {
+const Greet = ({ activeUser }) => {
 
     const makeAvatarImg = () => {
         const imgUrl = activeUser
@@ -29,6 +30,17 @@ function Greet({ activeUser }) {
             { makeGreetText() }
         </div>
     )
-}
+};
+
+Greet.propTypes = {
+    user: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+        created_at: PropTypes.string.isRequired,
+        updated_at: PropTypes.string.isRequired
+    })
+};
 
 export default Greet;
