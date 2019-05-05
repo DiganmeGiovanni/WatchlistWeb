@@ -1,5 +1,5 @@
 import React from 'react';
-import defAvatar from '../../img/avatar.png';
+import defAvatar from '../../../img/avatar.png';
 
 function Greet({ activeUser }) {
 
