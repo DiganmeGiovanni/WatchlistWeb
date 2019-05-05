@@ -169,29 +169,57 @@ html, body, #root, .watchlist-app {
   min-height: 100%;
   padding: 32px;
 
-  .headerbar .title {
-    font-size: $fs-display;
-    font-weight: bold;
+  .headerbar {
+
+    .title {
+      font-size: $fs-display;
+      font-weight: bold;
+    }
+
+    .inp-search {
+      background: $blue_dark;
+      background-image: url("../img/ic_search.png");
+      background-position: calc(300px - 32px) center;
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      border: none;
+      border-radius: 19px;
+      color: $white;
+      height: 38px;
+      outline: none;
+      padding-left: 16px;
+      padding-right: 40px;
+      width: 300px;
+    }
   }
 
   .movie-item {
+    cursor: pointer;
     width: 225px;
-  }
 
-  .movie-item .image {
-    background-size: cover;
-    background-position: center center;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.56);
-    height: 320px;
-    margin-bottom: 12px;
-    width: 224px;
-  }
+    .image {
+      background-size: cover;
+      background-position: center center;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.56);
+      height: 320px;
+      margin-bottom: 12px;
+      width: 224px;
+    }
 
-  .movie-item .title {
-    font-size: 0.9em;
-    font-weight: bold;
-    line-height: 17px;
+    .title {
+      font-size: 0.9em;
+      font-weight: bold;
+      line-height: 17px;
+    }
+
+    .subtitle {
+      font-size: 0.9em;
+      margin-bottom: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
 

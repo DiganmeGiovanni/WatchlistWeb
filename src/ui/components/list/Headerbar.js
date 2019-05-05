@@ -1,16 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Headerbar = ({ title }) => {
+const Headerbar = ({ title, filter, onFilterChange }) => {
     return (
         <div className="headerbar">
-            <h1 className="title">{ title }</h1>
+            <div className="row">
+                <div className="col-8">
+                    <h1 className="title">{ title }</h1>
+                </div>
+                <div className="col-4 text-right">
+                    <input
+                        type="text"
+                        className="inp-search"
+                        onChange={ onFilterChange }
+                        value={ filter }
+                    />
+                </div>
+            </div>
         </div>
     );
 };
 
 Headerbar.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    filter: PropTypes.string.isRequired,
+    onFilterChange: PropTypes.func.isRequired
 };
 
 export default Headerbar;

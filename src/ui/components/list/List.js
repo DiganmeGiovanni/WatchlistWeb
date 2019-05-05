@@ -6,6 +6,7 @@ import MovieItem from "./MovieItem";
 class List extends React.Component {
     constructor(props) {
         super(props);
+        this.onFilterChange = this.onFilterChange.bind(this);
 
         this.state = {
             filter: ''
@@ -36,14 +37,30 @@ class List extends React.Component {
             return this.makeEmptyStatus();
         }
 
+        let filteredMovies = this.props.has_movies;
+        if (this.state.filter) {
+            filteredMovies = filteredMovies.filter(has_movie => {
+                return has_movie.movie
+                    .title
+                    .toUpperCase()
+                    .includes(this.state.filter.toUpperCase());
+            })
+        }
+
         return <div className="row pt-4">
-            { this.props.has_movies.map((has_movie, idx) =>
+            { filteredMovies.map((has_movie, idx) =>
                 <MovieItem
                     has_movie={ has_movie }
                     key={`movie-${ idx }`}
                 />
             )}
         </div>
+    }
+
+    onFilterChange(e) {
+        this.setState({
+            filter: e.target.value
+        });
     }
 
     // noinspection JSMethodCanBeStatic
@@ -55,7 +72,11 @@ class List extends React.Component {
         return (
             <div className="section-list">
                 <div className="container-fluid">
-                    <Headerbar title={ this.props.list.name }/>
+                    <Headerbar
+                        title={ this.props.list.name }
+                        filter={ this.state.filter }
+                        onFilterChange={ this.onFilterChange }
+                    />
                     { this.makeMovieItems() }
                 </div>
             </div>

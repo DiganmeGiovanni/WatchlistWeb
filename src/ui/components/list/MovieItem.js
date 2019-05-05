@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import APITmdb from "../../../api/APITmdb";
+import moment from "moment";
 
 const MovieItem = ({ has_movie }) => {
 
@@ -24,10 +25,33 @@ const MovieItem = ({ has_movie }) => {
         />
     };
 
+    const makeSubtitle = () => {
+        let subtitle = "";
+
+        let releaseDate = has_movie.movie.release_date;
+        if (releaseDate) {
+            subtitle += moment(releaseDate).format('Y');
+        }
+
+        if (has_movie.movie.genres.length > 0) {
+            subtitle += ' / ';
+            for (let i = 0; i < has_movie.movie.genres.length; i++) {
+                subtitle += has_movie.movie.genres[i].name;
+
+                if (i < has_movie.movie.genres.length - 1) {
+                    subtitle += ', ';
+                }
+            }
+        }
+
+        return subtitle;
+    };
+
     return (
         <div className="col-6 col-sm-4 col-md-4 col-xl-3 pb-5">
             <div className="movie-item">
                 { makeImage() }
+                <div className="subtitle">{ makeSubtitle() }</div>
                 <div className="title">{ has_movie.movie.title }</div>
             </div>
         </div>
