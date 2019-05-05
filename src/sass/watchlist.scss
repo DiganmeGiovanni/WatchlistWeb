@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+@import "colors";
+@import "sizes";
+
+html, body {
+  color: $white;
+  font-family: 'PT Sans', sans-serif;
+  margin: 0;
+}
+
+html, body, #root, .watchlist-app {
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+.watchlist-app {
+  display: flex;
+  width: 100%;
+}
+
+
+//
+// Customized bootstrap buttons
+
+.btn-primary {
+  background: $yellow;
+  border: none;
+  border-radius: 16px;
+  color: $black;
+}
+
+
+//
+// Sidebar
+
+.sidebar {
+  background: $blue_dark;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  width: 320px;
+
+  // User greet
+  .greet {
+    //background: white;
+    overflow: hidden;
+    padding: 24px;
+    white-space: nowrap;
+
+    .avatar {
+      border-radius: 50%;
+      margin-right: 16px;
+      height: 40px;
+      vertical-align: middle;
+      width: 40px;
+    }
+
+    .greet-text {
+      font-size: $fs-big;
+      //text-overflow: ellipsis;
+    }
+  }
+
+  // Sidebar item
+  .sidebar-item {
+    cursor: pointer;
+    font-size: $fs-small;
+    font-weight: bold;
+    padding: 16px 24px;
+  }
+  .sidebar-item:hover {
+    background: $blue;
+  }
+
+  .sidebar-item.active {
+    background: $blue;
+    border-right: 4px solid $yellow;
+  }
+
+  // Stylish button to create list
+  .btn-primary {
+    border-radius: 20px;
+    height: 40px;
+    width: 180px;
+  }
+
+  hr {
+    background: $blue;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+
+//
+// Main content section
+
+.section-content {
+  background: $blue;
+  height: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  overflow: auto;
+  width: calc(100% - 320px);
+}
+
+// Login section
+.section-content.section-login {
+  padding-top: 250px;
+
+  .title {
+    font-size: $fs-bigger;
+  }
+
+  .btn-facebook {
+    background-color: #2476f2;
+    background-image: url("../img/ic_facebook.png");
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    background-position: 18px 6px;
+    border: none;
+    border-radius: 30px;
+    color: $white;
+    height: 50px;
+    width: 280px;
+  }
+
+  .btn-google {
+    background-color: #FFF;
+    background-image: url("../img/ic_google.png");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: 20px 14px;
+    border: none;
+    border-radius: 30px;
+    color: #757575;
+    height: 50px;
+    width: 280px;
+  }
+}
