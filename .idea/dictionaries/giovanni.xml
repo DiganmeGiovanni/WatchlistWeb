@@ -2,6 +2,8 @@
   <dictionary name="giovanni">
     <words>
       <w>axios</w>
+      <w>headerbar</w>
+      <w>tmdb</w>
     </words>
   </dictionary>
 </component>
