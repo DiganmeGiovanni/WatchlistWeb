@@ -7,7 +7,10 @@ function WatchlistApp() {
     return (
         <div className="watchlist-app">
             <Sidebar/>
-            <LoginContainer/>
+
+            <div className="section-content">
+                <LoginContainer/>
+            </div>
         </div>
     )
 }

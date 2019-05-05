@@ -5,14 +5,14 @@ const Login = ({ attemptingLogin, error, user, attemptLogin }) => {
 
     const makeLoading = () => (
             <div className="mt-5">
-                <span>Espera un momento</span>
+                <i className="title">Espera un momento</i>
                 <br/><br/>
                 <span className="fas fa-spin fa-3x fa-spinner"/>
             </div>
     );
 
     const makeLoginButtons = () => {
-        if (user !== null) {
+        if (user) {
             return <div className="mt-5">
                 <i className="title">
                     Bienvenido "{user.name}"
@@ -23,7 +23,7 @@ const Login = ({ attemptingLogin, error, user, attemptLogin }) => {
         }
 
         return <React.Fragment>
-            <div className="mt-5">
+            <div className="mt-3">
                 <button className="btn-facebook"
                         onClick={() => attemptLogin({token: 'hack'})}
                 >
@@ -39,8 +39,20 @@ const Login = ({ attemptingLogin, error, user, attemptLogin }) => {
         </React.Fragment>
     };
 
+    const makeError = () => {
+        if (!error) return <div className="pt-3"/>;
+
+        return <div className="row">
+            <div className="col-lg-6 offset-lg-3 pt-4">
+                <div className="alert alert-danger">
+                    { error }
+                </div>
+            </div>
+        </div>
+    };
+
     return (
-        <div className="section-content section-login">
+        <div className="section-login">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 col-lg-8 offset-lg-2 text-center">
@@ -49,6 +61,7 @@ const Login = ({ attemptingLogin, error, user, attemptLogin }) => {
                             y compartela con tus amigos
                         </div>
 
+                        { makeError() }
                         { attemptingLogin ? makeLoading() : makeLoginButtons() }
                     </div>
                 </div>
