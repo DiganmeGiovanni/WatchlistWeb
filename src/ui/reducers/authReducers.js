@@ -37,7 +37,6 @@ export const attemptLogin = (credentials) => {
 
         return APIWatchlist.login(credentials)
             .then(response => {
-                console.log(response.data);
                 if (response.status === 200) {
                     dispatch(onLoginSuccess(response.data))
                 } else {
