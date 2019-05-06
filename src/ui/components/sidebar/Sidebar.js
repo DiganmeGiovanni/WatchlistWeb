@@ -3,7 +3,7 @@ import Greet from "./Greet";
 import SidebarItem from "./SidebarItem";
 import PropTypes from "prop-types";
 
-const Sidebar = ({ user, lists }) => {
+const Sidebar = ({ user, lists, fetchLists }) => {
 
     const makeExtraLinks = () => {
         return [
@@ -24,10 +24,20 @@ const Sidebar = ({ user, lists }) => {
             ];
         }
 
+        if (lists == null) {
+            fetchLists(user.id);
+            return [
+                <SidebarItem
+                    title="Bienvenido"
+                    active={ true }
+                    key="item-welcome"
+                />
+            ];
+        }
+
         return lists.map((list, idx) => (
             <SidebarItem
                 title={ list.name }
-                active={ list.is_default_list }
                 key={`list-${ idx }`}
             />
         ))
