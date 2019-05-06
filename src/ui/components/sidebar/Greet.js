@@ -18,7 +18,7 @@ const Greet = ({ activeUser }) => {
 
     const makeGreetText = () => {
         const name = activeUser
-            ? `Hola, ${ activeUser.name }`
+            ? activeUser.name
             : 'Hola';
 
         return <span className="greet-text">{ name }</span>

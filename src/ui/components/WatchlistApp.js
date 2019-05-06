@@ -1,15 +1,18 @@
 import React from 'react';
 import '../../sass/watchlist.scss';
 import LoginContainer from "../containers/LoginContainer";
-import Sidebar from "./sidebar/Sidebar";
+import SidebarContainer from "../containers/SidebarContainer";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function WatchlistApp() {
     return (
         <div className="watchlist-app">
-            <Sidebar/>
+            <SidebarContainer/>
 
             <div className="section-content">
-                <LoginContainer/>
+                <Router>
+                    <Route path="/" component={ LoginContainer } exact/>
+                </Router>
             </div>
         </div>
     )

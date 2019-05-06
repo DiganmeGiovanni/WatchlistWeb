@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { attemptLogin } from "../actions/UserActions";
+import { attemptLogin } from "../reducers/authReducers"
 import Login from "../components/welcome/Login";
 
 const mapStateToProps = state => state.auth;

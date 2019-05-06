@@ -20,6 +20,8 @@ const Login = ({ attemptingLogin, error, user, attemptLogin }) => {
                 <br/><br/>
                 <span className="fas fa-spin fa-3x fa-spinner"/>
             </div>
+
+
         }
 
         return <React.Fragment>
