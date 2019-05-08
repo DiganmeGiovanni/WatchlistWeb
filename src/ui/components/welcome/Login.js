@@ -1,33 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FBAuthService from "../../../auth/FBAuthService";
 
-const Login = ({ attemptingLogin, error, user, attemptLogin }) => {
+class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onFbLoginClicked = this.onFbLoginClicked.bind(this);
 
-    const makeLoading = () => (
-            <div className="mt-5">
-                <i className="title">Espera un momento</i>
-                <br/><br/>
-                <span className="fas fa-spin fa-3x fa-spinner"/>
-            </div>
-    );
+        this.state = {
+            loading: false,
+            error: null
+        }
+    }
 
-    const makeLoginButtons = () => {
-        if (user) {
+    componentDidMount() {
+        FBAuthService.initSdk(() => {
+            this.setState({ loading: false })
+        });
+    }
+
+    makeLoading() {
+        return <div className="mt-5">
+            <i className="title">Espera un momento</i>
+            <br/><br/>
+            <span className="fas fa-spin fa-3x fa-spinner"/>
+        </div>
+    }
+
+    makeLoginButtons() {
+        if (this.props.user) {
             return <div className="mt-5">
                 <i className="title">
-                    Bienvenido "{user.name}"
+                    Bienvenido "{this.props.user.name}"
                 </i>
                 <br/><br/>
                 <span className="fas fa-spin fa-3x fa-spinner"/>
             </div>
-
-
         }
 
         return <React.Fragment>
             <div className="mt-3">
                 <button className="btn-facebook"
-                        onClick={() => attemptLogin({token: 'hack'})}
+                        onClick={ this.onFbLoginClicked }
                 >
                     Entrar con facebook
                 </button>
@@ -39,38 +53,66 @@ const Login = ({ attemptingLogin, error, user, attemptLogin }) => {
                 </button>
             </div>
         </React.Fragment>
-    };
+    }
 
-    const makeError = () => {
-        if (!error) return <div className="pt-3"/>;
+    makeErrors() {
+        return <>
+            { this.makeError(this.props.error) }
+            { this.makeError(this.state.error) }
+        </>
+    }
+
+    makeError(error) {
+        if (!error) return;
 
         return <div className="row">
-            <div className="col-lg-6 offset-lg-3 pt-4">
+            <div className="col-xl-6 offset-xl-3 pt-4">
                 <div className="alert alert-danger">
                     { error }
                 </div>
             </div>
         </div>
-    };
+    }
 
-    return (
-        <div className="section-login">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12 col-lg-8 offset-lg-2 text-center">
-                        <div className="title">
-                            Arma tu playlist para esos fines de semana en el sofa
-                            y compartela con tus amigos
+    onFbLoginClicked() {
+        this.setState({ loading: true });
+
+        FBAuthService.login(response => {
+            if (!response.success) {
+                this.setState({
+                    loading: false,
+                    error: "Debes iniciar sesión para poder utilizar la aplicación"
+                });
+                return;
+            }
+
+            // TODO Authenticate on backend and persist on local storage
+        });
+    }
+
+    render() {
+        return (
+            <div className="section-login">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12 col-lg-8 offset-lg-2 text-center">
+                            <div className="title">
+                                Arma tu playlist para esos fines de semana en el sofa
+                                y compartela con tus amigos
+                            </div>
+
+                            { this.makeErrors() }
+                            { this.state.loading
+                                ? this.makeLoading()
+                                : this.makeLoginButtons()
+                            }
                         </div>
-
-                        { makeError() }
-                        { attemptingLogin ? makeLoading() : makeLoginButtons() }
                     </div>
                 </div>
             </div>
-        </div>
-    )
-};
+        )
+    }
+}
 
 Login.propTypes = {
     attemptingLogin: PropTypes.bool.isRequired,
