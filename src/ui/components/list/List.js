@@ -13,6 +13,16 @@ class List extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.selectList(this.props.listId);
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.listId !== this.props.id) {
+            this.props.selectList(nextProps.listId);
+        }
+    }
+
     makeEmptyStatus() {
         return <div className="row">
             <div className="col-lg-4 offset-lg-4 pt-5 text-center">
@@ -32,12 +42,24 @@ class List extends React.Component {
         </div>
     }
 
+    makeLoadingContents() {
+        return <div className="row">
+            <div className="col-lg-4 offset-lg-4 pt-5 text-center">
+                <span className="fas fa-3x fa-spin fa-spinner"/>
+                <p className="fs-big mt-3">
+                    Obteniendo contenido de la lista
+                </p>
+                <br/>
+            </div>
+        </div>
+    }
+
     makeMovieItems() {
-        if (!this.props.has_movies) {
+        if (!this.props.hasMovies) {
             return this.makeEmptyStatus();
         }
 
-        let filteredMovies = this.props.has_movies;
+        let filteredMovies = this.props.hasMovies;
         if (this.state.filter) {
             filteredMovies = filteredMovies.filter(has_movie => {
                 return has_movie.movie
@@ -69,6 +91,14 @@ class List extends React.Component {
     }
 
     render() {
+        if (this.props.list === null) {
+            return <div className="section-list">
+                <div className="container-fluid">
+                    { this.makeLoadingContents() }
+                </div>
+            </div>
+        }
+
         return (
             <div className="section-list">
                 <div className="container-fluid">
@@ -85,6 +115,7 @@ class List extends React.Component {
 };
 
 List.propTypes = {
+    listId: PropTypes.string.isRequired,
     list: PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
@@ -92,9 +123,9 @@ List.propTypes = {
         created_at: PropTypes.string.isRequired,
         updated_at: PropTypes.string.isRequired,
         deleted: PropTypes.bool.isRequired
-    }).isRequired,
+    }),
 
-    has_movies: PropTypes.arrayOf(PropTypes.shape({
+    hasMovies: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number.isRequired,
         added_at: PropTypes.string.isRequired,
         seen_at: PropTypes.string,
@@ -119,7 +150,8 @@ List.propTypes = {
                 })
             }))
         })
-    }))
+    })),
+    selectList: PropTypes.func.isRequired
 };
 
 export default List;

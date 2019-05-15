@@ -3,7 +3,7 @@ import Greet from "./Greet";
 import SidebarItem from "./SidebarItem";
 import PropTypes from "prop-types";
 
-const Sidebar = ({ user, lists, fetchLists }) => {
+const Sidebar = ({ user, lists, selectedList, fetchLists }) => {
 
     const makeExtraLinks = () => {
         return [
@@ -37,7 +37,9 @@ const Sidebar = ({ user, lists, fetchLists }) => {
 
         return lists.map((list, idx) => (
             <SidebarItem
+                id={ list.id }
                 title={ list.name }
+                active={ selectedList && selectedList.id === list.id }
                 key={`list-${ idx }`}
             />
         ))
@@ -79,7 +81,9 @@ Sidebar.propTypes = {
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         is_default_list: PropTypes.bool.isRequired
-    }))
+    })),
+    selectedListId: PropTypes.object,
+    fetchLists: PropTypes.func.isRequired
 };
 
 export default Sidebar;

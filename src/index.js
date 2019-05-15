@@ -5,13 +5,15 @@ import WatchlistApp from './ui/components/WatchlistApp'
 import {Provider} from "react-redux";
 import {configureStore} from "redux-starter-kit";
 import authReducer from "./ui/reducers/authReducers";
-import listReducer from "./ui/reducers/listsReducers";
+import listsReducers from "./ui/reducers/listsReducers";
+import listReducer from "./ui/reducers/listReducers";
 
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        listsContainer: listReducer
+        listsContainer: listsReducers,
+        list: listReducer
     }
 });
 

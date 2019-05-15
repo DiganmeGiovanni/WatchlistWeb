@@ -4,7 +4,8 @@ import Sidebar from "../components/sidebar/Sidebar";
 
 const mapStateToProps = state => ({
     user: state.auth.user,
-    lists: state.listsContainer.lists
+    lists: state.listsContainer.lists,
+    selectedList: state.listsContainer.selectedList
 });
 const mapDispatchToProps = dispatch => ({
     fetchLists: userId => dispatch(fetchLists(userId))

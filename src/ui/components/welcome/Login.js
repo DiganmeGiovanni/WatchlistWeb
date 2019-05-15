@@ -8,7 +8,7 @@ class Login extends React.Component {
         this.onFbLoginClicked = this.onFbLoginClicked.bind(this);
 
         this.state = {
-            loading: false,
+            loading: true,
             error: null
         }
     }
@@ -86,7 +86,15 @@ class Login extends React.Component {
                 return;
             }
 
-            // TODO Authenticate on backend and persist on local storage
+            // Authenticate on backend and persist on local storage
+            let credentials = {
+                name: response.user.name,
+                email: response.user.email,
+                picture: response.user.picture,
+                auth_provider_id: 1, // Facebook,
+                token: response.user.token
+            };
+            this.props.attemptLogin(credentials);
         });
     }
 
@@ -102,7 +110,7 @@ class Login extends React.Component {
                             </div>
 
                             { this.makeErrors() }
-                            { this.state.loading
+                            { this.state.loading || this.props.isLoading
                                 ? this.makeLoading()
                                 : this.makeLoginButtons()
                             }
@@ -115,7 +123,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-    attemptingLogin: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     error: PropTypes.string,
     user: PropTypes.shape({
         id: PropTypes.number.isRequired,

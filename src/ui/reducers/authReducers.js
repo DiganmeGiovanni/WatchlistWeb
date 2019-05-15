@@ -1,14 +1,20 @@
 import {createSlice} from "redux-starter-kit";
 import APIWatchlist from "../../api/APIWatchlist";
+import AuthService from "../../auth/AuthService";
 
 const initialState = {
-    attemptingLogin: false,
+    isLoading: true,
     error: null,
     user: null
 };
 
+// Session already started?
+if (AuthService.isSessionActive()) {
+    initialState.isLoading = false;
+    initialState.user = AuthService.currentUser();
+}
+
 const authSlice = createSlice({
-    // slice: 'auth',
     initialState: initialState,
     reducers: {
         onLoginStarted(state) {
@@ -37,10 +43,20 @@ export const attemptLogin = (credentials) => {
 
         return APIWatchlist.login(credentials)
             .then(response => {
-                if (response.status === 200) {
-                    dispatch(onLoginSuccess(response.data))
+                if (response.status === 200 && response.data.success) {
+
+                    // Persist token on local storage for future
+                    // requests
+                    AuthService.storeSession(
+                        response.data.user,
+                        response.data.token
+                    );
+
+                    // TODO Setup axios client for future requests
+
+                    dispatch(onLoginSuccess(response.data.user))
                 } else {
-                    onLoginFailed("Login failed, please retry")
+                    dispatch(onLoginFailed("Login failed, please retry"))
                 }
             })
     }
