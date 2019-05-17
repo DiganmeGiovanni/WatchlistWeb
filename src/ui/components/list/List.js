@@ -14,13 +14,17 @@ class List extends React.Component {
     }
 
     componentDidMount() {
+        if (!this.props.user) {
+            this.props.attemptLocalLogin();
+        }
+
         this.props.selectList(this.props.listId);
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        if (nextProps.listId !== this.props.id) {
-            this.props.selectList(nextProps.listId);
-        }
+        // if (nextProps.listId !== this.props.id) {
+        //     this.props.selectList(nextProps.listId);
+        // }
     }
 
     makeEmptyStatus() {
@@ -151,7 +155,9 @@ List.propTypes = {
             }))
         })
     })),
-    selectList: PropTypes.func.isRequired
+
+    selectList: PropTypes.func.isRequired,
+    attemptLocalLogin: PropTypes.func.isRequired
 };
 
 export default List;

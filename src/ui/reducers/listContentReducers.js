@@ -7,7 +7,7 @@ const initialState = {
     hasMovies: [],
 };
 
-const listSlice = createSlice({
+const listContentSlice = createSlice({
     initialState: initialState,
     reducers: {
         onFetchStarted(state) {
@@ -29,7 +29,7 @@ const listSlice = createSlice({
 });
 
 // Extract actions
-const { onFetchStarted, onFetchSuccessful, onFetchFailed } = listSlice.actions;
+const { onFetchStarted, onFetchSuccessful, onFetchFailed } = listContentSlice.actions;
 
 export const fetchMovies = (listId) => {
     return dispatch => {
@@ -45,4 +45,4 @@ export const fetchMovies = (listId) => {
             })
     }
 };
-export default listSlice.reducer;
+export default listContentSlice.reducer;

@@ -17,6 +17,8 @@ class Login extends React.Component {
         FBAuthService.initSdk(() => {
             this.setState({ loading: false })
         });
+
+        this.props.attemptLocalLogin();
     }
 
     makeLoading() {
@@ -110,7 +112,7 @@ class Login extends React.Component {
                             </div>
 
                             { this.makeErrors() }
-                            { this.state.loading || this.props.isLoading
+                            { this.state.loading || this.props.attemptingLogin
                                 ? this.makeLoading()
                                 : this.makeLoginButtons()
                             }
@@ -123,7 +125,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
+    attemptingLogin: PropTypes.bool.isRequired,
     error: PropTypes.string,
     user: PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -133,7 +135,9 @@ Login.propTypes = {
         created_at: PropTypes.string.isRequired,
         updated_at: PropTypes.string.isRequired
     }),
-    attemptLogin: PropTypes.func.isRequired
+
+    attemptLogin: PropTypes.func.isRequired,
+    attemptLocalLogin: PropTypes.func.isRequired
 };
 
 export default Login;

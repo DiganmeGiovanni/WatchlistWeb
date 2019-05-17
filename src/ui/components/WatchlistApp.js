@@ -3,19 +3,19 @@ import '../../sass/watchlist.scss';
 import LoginContainer from "../containers/LoginContainer";
 import ListContainer from "../containers/ListContainer";
 import SidebarContainer from "../containers/SidebarContainer";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 function WatchlistApp() {
     return (
         <div className="watchlist-app">
-            <Router>
-                <SidebarContainer/>
+            <SidebarContainer/>
 
-                <div className="section-content">
+            <div className="section-content">
+                <Switch>
                     <Route path="/" component={ LoginContainer } exact/>
                     <Route path="/list/:listId" component={ ListContainer }/>
-                </div>
-            </Router>
+                </Switch>
+            </div>
         </div>
     )
 }

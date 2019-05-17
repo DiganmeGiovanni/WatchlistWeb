@@ -3,16 +3,10 @@ import APIWatchlist from "../../api/APIWatchlist";
 import AuthService from "../../auth/AuthService";
 
 const initialState = {
-    isLoading: true,
+    attemptingLogin: false,
     error: null,
     user: null
 };
-
-// Session already started?
-if (AuthService.isSessionActive()) {
-    initialState.isLoading = false;
-    initialState.user = AuthService.currentUser();
-}
 
 const authSlice = createSlice({
     initialState: initialState,
@@ -36,6 +30,21 @@ const authSlice = createSlice({
 // Extract the action creators object and the reducer
 const { actions, reducer } = authSlice;
 const { onLoginStarted, onLoginSuccess, onLoginFailed } = actions;
+
+export const attemptLocalLogin = () => {
+    return dispatch => {
+        dispatch(onLoginStarted());
+
+        if (AuthService.isSessionActive()) {
+            let token = AuthService.currentSessionToken();
+            let user = AuthService.currentUser();
+
+            // TODO Setup axios client for future requests
+
+            dispatch(onLoginSuccess(user));
+        }
+    }
+};
 
 export const attemptLogin = (credentials) => {
     return dispatch => {
@@ -61,4 +70,5 @@ export const attemptLogin = (credentials) => {
             })
     }
 };
+
 export default reducer;
