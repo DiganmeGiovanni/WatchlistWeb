@@ -2,14 +2,24 @@ import React from 'react';
 import Greet from "./Greet";
 import SidebarItem from "./SidebarItem";
 import PropTypes from "prop-types";
+import { listType, userType } from "../../types/WatchlistTypes";
 
-const Sidebar = ({ user, lists, selectedList, fetchLists }) => {
+const Sidebar = ({ user, lists, selectedListId, selectList, fetchLists }) => {
 
     const makeExtraLinks = () => {
         return [
-            <SidebarItem title="Recomendaciones" key="item-suggestions"/>,
-            <SidebarItem title="Próximos estrenos" key="item-incoming"/>,
-            <SidebarItem title="Generos" key="item-genres"/>
+            <SidebarItem
+                title="Recomendaciones"
+                key="item-suggestions"
+            />,
+            <SidebarItem
+                title="Próximos estrenos"
+                key="item-incoming"
+            />,
+            <SidebarItem
+                title="Generos"
+                key="item-genres"
+            />
         ];
     };
 
@@ -39,8 +49,9 @@ const Sidebar = ({ user, lists, selectedList, fetchLists }) => {
             <SidebarItem
                 id={ list.id }
                 title={ list.name }
-                active={ selectedList && selectedList.id === list.id }
+                active={ selectedListId === list.id }
                 key={`list-${ idx }`}
+                selectList={ selectList }
             />
         ))
     };
@@ -69,20 +80,11 @@ const Sidebar = ({ user, lists, selectedList, fetchLists }) => {
 };
 
 Sidebar.propTypes = {
-    user: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        created_at: PropTypes.string.isRequired,
-        updated_at: PropTypes.string.isRequired
-    }),
-    lists: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        is_default_list: PropTypes.bool.isRequired
-    })),
-    selectedListId: PropTypes.object,
+    user: userType,
+    lists: PropTypes.arrayOf(listType),
+    selectedListId: PropTypes.number,
+
+    selectList: PropTypes.func.isRequired,
     fetchLists: PropTypes.func.isRequired
 };
 

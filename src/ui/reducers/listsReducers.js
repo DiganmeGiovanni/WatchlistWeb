@@ -1,6 +1,5 @@
-import { createSlice } from "redux-starter-kit";
+import {createSlice} from "redux-starter-kit";
 import { push } from "connected-react-router";
-import { fetchMovies } from "./listContentReducers";
 import APIWatchlist from "../../api/APIWatchlist";
 
 const initialState = {
@@ -32,12 +31,12 @@ const listsSlice = createSlice({
 
 // Extract the action creators object and the reducer
 const { actions, reducer } = listsSlice;
-const { onListsFetched, onListSelected } = actions;
+export const { onListsFetched, onListSelected } = actions;
 
 export const selectList = (listId) => {
     return dispatch => {
         dispatch(onListSelected(listId));
-        // dispatch(fetchMovies(listId));
+        dispatch(push(`/list/${ listId }`))
     }
 };
 
@@ -53,7 +52,7 @@ export const fetchLists = (userId) => {
                     } else {
                         for (let list of response.data) {
                             if (list.is_default_list) {
-                                dispatch(push(`/list/${list.id}`));
+                                selectList(list.id)
                             }
                         }
                     }

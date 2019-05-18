@@ -1,21 +1,31 @@
 import { connect } from "react-redux";
-import { selectList } from "../reducers/listsReducers";
+import { selectList, onListSelected } from "../reducers/listsReducers";
 import { attemptLocalLogin } from "../reducers/authReducers";
 import List from "../components/list/List";
 
-const mapStateToProps = (state, ownProps) => ({
-    listId: ownProps.match.params.listId,
-    list: state.lists.selectedList,
-    isFetching: state.list.isFetching,
-    error: state.list.error,
-    hasMovies: state.list.hasMovies,
+const mapStateToProps = (state, ownProps) => {
+    let listId = 0;
+    if (!isNaN(ownProps.match.params.listId)) {
+        listId = ownProps.match.params.listId * 1;
+    }
 
-    user: state.auth.user
-});
+    return {
+        listId,
+        list: state.lists.selectedList,
+        selectedListId: state.lists.selectedListId,
+        hasMovies: state.list.hasMovies,
+
+        isFetching: state.list.isFetching,
+        error: state.list.error,
+
+        user: state.auth.user
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     selectList: listId => dispatch(selectList(listId)),
-    attemptLocalLogin: () => dispatch(attemptLocalLogin())
+    onListSelected: listId => dispatch(onListSelected(listId)),
+    attemptLocalLogin: () => dispatch(attemptLocalLogin()),
 });
 
 export default connect(

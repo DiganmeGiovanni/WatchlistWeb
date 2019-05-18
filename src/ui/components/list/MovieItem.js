@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import APITmdb from "../../../api/APITmdb";
 import moment from "moment";
+import { hasMovieType } from "../../types/WatchlistTypes";
 
 const MovieItem = ({ has_movie }) => {
 
@@ -59,32 +59,7 @@ const MovieItem = ({ has_movie }) => {
 };
 
 MovieItem.propTypes = {
-    has_movie: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        added_at: PropTypes.string.isRequired,
-        seen_at: PropTypes.string,
-        added_by: PropTypes.number.isRequired,
-        movie: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            tmdb_id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            original_title: PropTypes.string.isRequired,
-            synopsis: PropTypes.string,
-            rating: PropTypes.number,
-            genres: PropTypes.arrayOf(PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                name: PropTypes.string.isRequired
-            })),
-            pictures: PropTypes.arrayOf(PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                url: PropTypes.string.isRequired,
-                category: PropTypes.shape({
-                    id: PropTypes.number.isRequired,
-                    name: PropTypes.string.isRequired
-                })
-            }))
-        })
-    })
+    has_movie: hasMovieType
 };
 
 export default MovieItem;

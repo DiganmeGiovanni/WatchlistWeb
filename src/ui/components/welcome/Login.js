@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FBAuthService from "../../../auth/FBAuthService";
+import { userType } from "../../types/WatchlistTypes";
 
 class Login extends React.Component {
     constructor(props) {
@@ -127,14 +128,7 @@ class Login extends React.Component {
 Login.propTypes = {
     attemptingLogin: PropTypes.bool.isRequired,
     error: PropTypes.string,
-    user: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        created_at: PropTypes.string.isRequired,
-        updated_at: PropTypes.string.isRequired
-    }),
+    user: userType,
 
     attemptLogin: PropTypes.func.isRequired,
     attemptLocalLogin: PropTypes.func.isRequired

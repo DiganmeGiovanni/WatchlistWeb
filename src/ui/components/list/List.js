@@ -2,6 +2,7 @@ import React from "react";
 import Headerbar from "./Headerbar";
 import PropTypes from "prop-types";
 import MovieItem from "./MovieItem";
+import { hasMovieType, listType, userType } from "../../types/WatchlistTypes";
 
 class List extends React.Component {
     constructor(props) {
@@ -18,7 +19,9 @@ class List extends React.Component {
             this.props.attemptLocalLogin();
         }
 
-        this.props.selectList(this.props.listId);
+        if (this.props.listId !== this.props.selectedListId) {
+            this.props.onListSelected(this.props.listId);
+        }
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -119,44 +122,15 @@ class List extends React.Component {
 };
 
 List.propTypes = {
-    listId: PropTypes.string.isRequired,
-    list: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        is_default_list: PropTypes.bool.isRequired,
-        created_at: PropTypes.string.isRequired,
-        updated_at: PropTypes.string.isRequired,
-        deleted: PropTypes.bool.isRequired
-    }),
+    listId: PropTypes.number.isRequired,
+    list: listType,
+    selectedListId: PropTypes.number,
+    hasMovies: PropTypes.arrayOf(hasMovieType),
+    isFetching: PropTypes.bool.isRequired,
+    error: PropTypes.string,
+    user: userType,
 
-    hasMovies: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        added_at: PropTypes.string.isRequired,
-        seen_at: PropTypes.string,
-        added_by: PropTypes.number.isRequired,
-        movie: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            tmdb_id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            original_title: PropTypes.string.isRequired,
-            synopsis: PropTypes.string,
-            rating: PropTypes.number,
-            genres: PropTypes.arrayOf(PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                name: PropTypes.string.isRequired
-            })),
-            pictures: PropTypes.arrayOf(PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                url: PropTypes.string.isRequired,
-                category: PropTypes.shape({
-                    id: PropTypes.number.isRequired,
-                    name: PropTypes.string.isRequired
-                })
-            }))
-        })
-    })),
-
-    selectList: PropTypes.func.isRequired,
+    onListSelected: PropTypes.func.isRequired,
     attemptLocalLogin: PropTypes.func.isRequired
 };
 

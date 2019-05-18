@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import defAvatar from '../../../img/avatar.png';
+import { userType } from "../../types/WatchlistTypes";
 
 const Greet = ({ activeUser }) => {
-
     const makeAvatarImg = () => {
         const imgUrl = activeUser
             ? activeUser.picture
@@ -33,14 +32,7 @@ const Greet = ({ activeUser }) => {
 };
 
 Greet.propTypes = {
-    user: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        created_at: PropTypes.string.isRequired,
-        updated_at: PropTypes.string.isRequired
-    })
+    user: userType
 };
 
 export default Greet;
