@@ -1,8 +1,8 @@
 Watchlist Web Client
 ====================
 A web app based on **react and redux** for the
-[Watchlist](https://github.com/DiganmeGiovanni/Watchlist) which is also developed
-by me.
+[Watchlist](https://github.com/DiganmeGiovanni/Watchlist) backend. (Which is a personal
+side project).
 
 Actually this is a rewrite/redesign/remake (Work in progress) of a previous version that
 I wrote a few years ago when I was learning about react and Flux.
