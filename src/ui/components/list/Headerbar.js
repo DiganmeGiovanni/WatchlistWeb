@@ -5,10 +5,10 @@ const Headerbar = ({ title, filter, onFilterChange }) => {
     return (
         <div className="headerbar">
             <div className="row">
-                <div className="col-8">
+                <div className="col-8 col-md-6">
                     <h1 className="title">{ title }</h1>
                 </div>
-                <div className="col-4 text-right">
+                <div className="col-4 col-md-6 text-right">
                     <input
                         type="text"
                         className="inp-search"
