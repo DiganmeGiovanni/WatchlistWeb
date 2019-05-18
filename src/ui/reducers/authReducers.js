@@ -39,8 +39,7 @@ export const attemptLocalLogin = () => {
             let token = AuthService.currentSessionToken();
             let user = AuthService.currentUser();
 
-            // TODO Setup axios client for future requests
-
+            APIWatchlist.setAuthToken(token);
             dispatch(onLoginSuccess(user));
         }
     }
@@ -61,8 +60,7 @@ export const attemptLogin = (credentials) => {
                         response.data.token
                     );
 
-                    // TODO Setup axios client for future requests
-
+                    APIWatchlist.setAuthToken(response.data.token);
                     dispatch(onLoginSuccess(response.data.user))
                 } else {
                     dispatch(onLoginFailed("Login failed, please retry"))
