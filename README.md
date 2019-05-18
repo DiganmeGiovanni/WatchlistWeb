@@ -5,7 +5,7 @@ A web app based on **react and redux** for the
 side project).
 
 Actually this is a rewrite/redesign/remake (Work in progress) of a previous version that
-I wrote a few years ago when I was learning about react and Flux.
+I wrote a few years ago when I was learning about React and Flux.
 
 For this project i decide to make the design from ground up, as a personal challenge:
 
