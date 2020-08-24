@@ -1,0 +1,19 @@
+@import './colors';
+
+.btnPrimary {
+    background: $yellow;
+    border: none;
+    border-radius: 16px;
+    color: $black;
+    padding: 8px 32px;
+}
+
+.btnPrimary:hover,
+.btnPrimary:active,
+.btnPrimary:hover:active,
+.btnPrimary:focus,
+.btnPrimary:not(:disabled):not(.disabled):active:focus {
+    background: $yellow_dark;
+    box-shadow: none;
+    color: $black;
+}

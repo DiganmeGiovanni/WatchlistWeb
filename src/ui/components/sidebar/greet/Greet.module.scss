@@ -1,0 +1,22 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+.greet {
+    background: $blue_dark;
+    overflow: hidden;
+    padding: 24px;
+    white-space: nowrap;
+}
+
+.avatar {
+    border-radius: 50%;
+    margin-right: 16px;
+    height: 40px;
+    vertical-align: middle;
+    width: 40px;
+}
+
+.text {
+    font-size: $fs-big;
+    //text-overflow: ellipsis;
+}

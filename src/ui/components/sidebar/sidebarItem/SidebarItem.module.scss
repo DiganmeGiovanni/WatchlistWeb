@@ -1,0 +1,20 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+.sidebarItem {
+    background: $blue_dark;
+    cursor: pointer;
+    font-size: $fs-small;
+    font-weight: bold;
+    padding: 16px 24px;
+}
+
+.sidebarItem:hover {
+    background: $blue;
+}
+
+.sidebarItemActive {
+    composes: sidebarItem;
+    background: $blue;
+    border-right: 4px solid $yellow;
+}

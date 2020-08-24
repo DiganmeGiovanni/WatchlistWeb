@@ -1,0 +1,41 @@
+@import '../../../ui/styles/colors';
+// @import '../../../ui/styles/buttons';
+// @import '../../../styles/sizes';
+
+.sidebar {
+    background: $blue_dark;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 320px;
+}
+
+.hr {
+    background: $blue;
+    border: none;
+    height: 1px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.btnPrimary {
+    composes: btnPrimary from '../../../ui/styles/_buttons.scss';
+    border-radius: 20px;
+    height: 40px;
+    width: 180px;
+}
+  
+//     // Stylish button to create list
+//     .btn-primary {
+//       border-radius: 20px;
+//       height: 40px;
+//       width: 180px;
+//     }
+  
+//     hr {
+//       background: $blue;
+//       margin-left: 16px;
+//       margin-right: 16px;
+//     }
+//   }
