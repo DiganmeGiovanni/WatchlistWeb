@@ -16,34 +16,25 @@ export const listType = PropTypes.shape({
     created_at: PropTypes.string.isRequired,
     updated_at: PropTypes.string.isRequired,
     deleted: PropTypes.bool.isRequired
-});
+})
 
 export const genreType = PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired
-});
-
-export const pictureCategoryType = PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired
-});
-
-export const pictureType = PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    url: PropTypes.string.isRequired,
-    category: pictureCategoryType
-});
+})
 
 export const movieType = PropTypes.shape({
     id: PropTypes.number.isRequired,
     tmdb_id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     original_title: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    runtime: PropTypes.number.isRequired,
     synopsis: PropTypes.string,
     rating: PropTypes.number,
+    poster_path: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(genreType),
-    pictures: PropTypes.arrayOf(pictureType)
-});
+})
 
 export const hasMovieType = PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -51,4 +42,4 @@ export const hasMovieType = PropTypes.shape({
     seen_at: PropTypes.string,
     added_by: PropTypes.number.isRequired,
     movie: movieType
-});
+})
