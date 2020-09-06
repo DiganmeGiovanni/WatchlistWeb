@@ -1,0 +1,27 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+.headerBar {
+    background: $blue;
+}
+
+.title {
+    font-size: $fs-display;
+    font-weight: bold;
+}
+
+.inpSearch {
+    background: $blue_dark;
+    background-image: url("../../../img/ic_search.png");
+    background-position: calc(300px - 32px) center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 19px;
+    color: $white;
+    height: 38px;
+    outline: none;
+    padding-left: 16px;
+    padding-right: 40px;
+    width: 300px;
+}
