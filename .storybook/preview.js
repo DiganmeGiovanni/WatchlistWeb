@@ -30,7 +30,7 @@ export const parameters = {
       large: {
         name: 'Large (992)',
         styles: {
-          width: '921px',
+          width: '992px',
           height: '1080px',
         }
       },
