@@ -139,19 +139,6 @@ html, body, #root, .watchlist-app {
   }
 }
 
-@media screen and (max-width: 1199px) {
-  .section-list {
-    padding: 24px;
-
-    .headerbar {
-      .inp-search {
-        background-position: calc(250px - 32px) center;
-        width: 250px;
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 991px) {
   .sidebar {
     width: 280px;
@@ -159,64 +146,5 @@ html, body, #root, .watchlist-app {
 
   .section-content {
     width: calc(100% - 280px);
-  }
-
-  .section-list {
-    padding: 16px;
-
-    .movie-item {
-      width: 190px;
-    }
-
-    .movie-item .image {
-      height: 272px;
-      width: 190px;
-    }
-  }
-}
-
-@media screen and (max-width: 767px) {
-
-  .section-list {
-
-    .movie-item {
-      width: 150px;
-    }
-
-    .movie-item .image {
-      height: 215px;
-      width: 150px;
-    }
-  }
-}
-
-@media screen and (max-width: 575px) {
-
-  .section-list {
-    padding: 8px;
-
-    .movie-item {
-      width: 170px;
-    }
-
-    .movie-item .image {
-      height: 243px;
-      width: 170px;
-    }
-  }
-}
-
-@media screen and (max-width: 424px) {
-
-  .section-list {
-
-    .movie-item {
-      width: 120px;
-    }
-
-    .movie-item .image {
-      height: 172px;
-      width: 120px;
-    }
   }
 }

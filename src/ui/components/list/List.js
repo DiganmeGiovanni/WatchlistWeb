@@ -5,6 +5,8 @@ import { hasMovieType } from "../../types/WatchlistTypes"
 import HeaderBar from './headerBar/HeaderBar'
 import ListContent from './ListContent'
 
+import styles from './List.module.scss'
+
 const List = ({ isFetching, listTitle, hasMovies }) => {
     const [filter, setFilter] = useState('')
 
@@ -20,14 +22,12 @@ const List = ({ isFetching, listTitle, hasMovies }) => {
     }
 
     return  (
-        <div className='section-list'>
+        <div className={ styles.list }>
             <div className='container-fluid'>
                 <HeaderBar
                     title={ listTitle }
                     filter={ filter }
-                    onFilterChange={(e) => {
-                        setFilter(e.target.value)
-                    }}
+                    onFilterChange={ filter => setFilter(filter) }
                 />
 
                 <ListContent
