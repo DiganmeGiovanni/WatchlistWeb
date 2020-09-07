@@ -1,0 +1,17 @@
+@import '../../../styles/colors';
+
+.floatingButton {
+    align-items: center;
+    background: $yellow;
+    border-radius: 50%;
+    bottom: 40px;
+    color: $black;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.5em;
+    height: 64px;
+    justify-content: center;
+    position: fixed;
+    right: 56px;
+    width: 64px;
+}

@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import { hasMovieType } from "../../types/WatchlistTypes"
 import HeaderBar from './headerBar/HeaderBar'
 import ListContent from './ListContent'
+import FloatingButton from './floatingButton/FloatingButton'
 
 import styles from './List.module.scss'
 
@@ -33,6 +34,12 @@ const List = ({ isFetching, listTitle, hasMovies }) => {
                 <ListContent
                     isFetching={ isFetching }
                     hasMovies={ filteredMovies }
+                />
+
+                <FloatingButton
+                    onClick={ () => {
+                        console.log('Plus clicked')
+                    }}
                 />
             </div>
         </div>
