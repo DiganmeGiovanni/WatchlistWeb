@@ -43,3 +43,13 @@ export const hasMovieType = PropTypes.shape({
     added_by: PropTypes.number.isRequired,
     movie: movieType
 })
+
+export const movieSearchResultType = PropTypes.shape({
+    tmdb_id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    release_date: PropTypes.string.isRequired,
+    synopsis: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    backdrop_path: PropTypes.string.isRequired
+})

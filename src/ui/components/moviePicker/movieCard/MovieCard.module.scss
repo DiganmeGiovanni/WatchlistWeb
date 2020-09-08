@@ -1,0 +1,39 @@
+@import '../../../styles/colors';
+@import '../../../styles/sizes';
+
+$cardRadius: 8px;
+$posterHeight: 231px;
+$posterWidth: 154px;
+
+.movieCard {
+    background: $blue_light;
+    border-radius: $cardRadius;
+    color: $black;
+    display: flex;
+    max-height: $posterHeight;
+    width: 500px;
+}
+
+.movieCardImageContainer {
+    border-top-left-radius: $cardRadius;
+    border-bottom-left-radius: $cardRadius;
+    flex: 1;
+    max-width: 154px;
+}
+
+.movieCardImage {
+    border-radius: 4px;
+    height: $posterHeight;
+    width: $posterWidth;
+}
+
+.movieCardContent {
+    flex: 2;
+    margin: 16px;
+    overflow: hidden;
+}
+
+.synopsis {
+    font-size: $fs-small;
+    text-overflow: ellipsis;
+}

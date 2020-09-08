@@ -1,6 +1,14 @@
 
 const imagesBaseUrl = 'https://image.tmdb.org/t/p/'
-const imageSizes = {
+
+const currentWidth = () => {
+    return Math.max(
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0
+    )
+}
+
+export const imageSizes = {
     poster: {
         w92: 'w92',
         w154: 'w154',
@@ -16,13 +24,6 @@ const imageSizes = {
         w1280: 'w1280',
         original: 'original'
     }
-}
-
-const currentWidth = () => {
-    return Math.max(
-        document.documentElement.clientWidth || 0,
-        window.innerWidth || 0
-    )
 }
 
 class TmdbClient {
@@ -47,7 +48,11 @@ class TmdbClient {
             imageWidth = imageSizes.poster.w154
         }
 
-        return `${ imagesBaseUrl }${ imageWidth }${ path }`
+        return this.getPosterUrlForSize(path, imageWidth)
+    }
+
+    getPosterUrlForSize(path, size) {
+        return `${ imagesBaseUrl }${ size }${ path }`
     }
 }
 
