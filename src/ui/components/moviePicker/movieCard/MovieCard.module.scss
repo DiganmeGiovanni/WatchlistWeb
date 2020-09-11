@@ -9,9 +9,10 @@ $posterWidth: 154px;
     background: $blue_light;
     border-radius: $cardRadius;
     color: $black;
+    cursor: pointer;
     display: flex;
     max-height: $posterHeight;
-    width: 500px;
+    width: 100%;
 }
 
 .movieCardImageContainer {

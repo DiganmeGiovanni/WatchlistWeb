@@ -1,0 +1,67 @@
+@import '../../styles/colors';
+@import '../../styles/sizes';
+
+.moviePicker {
+    background: $blue;
+    padding: 32px 16px;
+}
+
+.backBtn {
+    color: $yellow;
+    cursor: pointer;
+    font-size: 1.7em;
+}
+
+.title {
+    display: inline-block;
+    font-size: $fs-display;
+    font-weight: bold;
+}
+
+.searchBarContainer {
+    background: $blue;
+    padding: 16px 0 32px;
+    text-align: center;
+}
+
+.searchBar {
+    align-items: center;
+    background: $blue_dark;
+    border-radius: 8px;
+    display: flex;
+    margin: auto;
+    padding: 0 16px;
+    text-align: start;
+    width: 450px;
+}
+
+.inpSearch {
+    background: $blue_dark;
+    border: none;
+    color: $white;
+    flex-grow: 1;
+    height: 40px;
+    outline: none;
+    padding: 0 8px 0 16px;
+    width: 300px;
+
+    &::placeholder {
+        color: $gray_light
+    }
+}
+
+.searchBarIcon {
+    color: $gray_light;
+    font-size: 1.1em;
+}
+
+.clearBtn {
+    color: $red;
+    cursor: pointer;
+}
+
+.searchResultsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+}
