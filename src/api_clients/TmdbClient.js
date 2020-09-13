@@ -22,6 +22,12 @@ export const imageSizes = {
         w780: 'w780',
         w1280: 'w1280',
         original: 'original'
+    },
+    profile: {
+        w45: "w45",
+        w185: "w185",
+        h632: "h632",
+        original: "original"
     }
 }
 
@@ -82,6 +88,14 @@ class TmdbClient {
     }
 
     getPosterUrlForSize(path, size) {
+        return `${ this.imagesBaseUrl }${ size }${ path }`
+    }
+
+    getBackdropUrlForSize(path, size) {
+        return `${ this.imagesBaseUrl}${ size }${ path }`
+    }
+
+    getPictureUrlForSize(path, size) {
         return `${ this.imagesBaseUrl }${ size }${ path }`
     }
 

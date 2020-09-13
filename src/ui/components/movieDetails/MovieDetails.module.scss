@@ -1,0 +1,40 @@
+@import '../../styles/colors';
+
+.movieDetails {
+    background: $blue;
+    background-size: cover;
+    background-position: center center;
+}
+
+.movieDetailsWrapper {
+    background: rgba(3, 3, 3, 0.6);
+}
+
+.header {
+    font-weight: bold;
+}
+
+.movieAttrLabel {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.movieAttrValue {
+    font-size: 1em;
+}
+
+.movieAttrOnlyValue {
+    font-size: 1.2em;
+}
+
+.castContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.viewAllCast {
+    color: $white;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-decoration: underline;
+}

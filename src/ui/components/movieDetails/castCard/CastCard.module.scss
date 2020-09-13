@@ -1,0 +1,28 @@
+@import '../../../styles/colors';
+
+$profileWidth: 56px;
+$castSpacing: 24px;
+
+.castCard {
+    align-items: center;
+    display: flex;
+    margin: 0 24px 16px 0;
+}
+
+.profileImg {
+    background-size: cover;
+    background-position: center center;
+    border: 1px solid $blue;
+    border-radius: 50%;
+    flex: 1;
+    height: $profileWidth;
+    margin-right: 8px;
+    width: $profileWidth;
+    max-width: $profileWidth;
+}
+
+.castInfo {
+    flex: 2;
+    flex-grow: 1;
+    font-size: 0.95em;
+}
