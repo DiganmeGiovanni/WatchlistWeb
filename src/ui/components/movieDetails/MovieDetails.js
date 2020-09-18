@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import moment from 'moment'
 
 import CastCard from './castCard/CastCard'
@@ -25,22 +24,23 @@ const MovieDetails = ({ children, movie }) => {
     const releaseDate = moment(movie.release_date).format('ll')
     const genres = movie.genres.map(genre => genre.name).join(' | ')
 
-    const director = movie.credits.crew
+    const director = movie
+        .crew
         .filter(crewMember => crewMember.job === 'Director')
         .map(crewMember => crewMember.name)
         .join(', ')
 
     const makeCastJsx = () => {
-        let cast = movie.credits
+        let cast = movie
             .cast
-            .filter(castMember => castMember.profile_path)
+            .filter(castMember => castMember.picture_url)
         if (!showAllCast) {
             cast = cast.slice(0, 5)
         }
 
         return cast.map(castMember => {
             const pictureUrl = tmdbClient.getPictureUrlForSize(
-                castMember.profile_path,
+                castMember.picture_url,
                 imageSizes.profile.w185
             )
 
@@ -61,8 +61,13 @@ const MovieDetails = ({ children, movie }) => {
         <div className={ styles.movieDetailsWrapper }>
             <div className="container pt-3 pb-5">
                 <div className="row">
-                    <div className="col-12 text-center pt-3 pb-5">
+                    <div className="col-12 text-center pt-3">
                         <h1 className={ styles.header }>{ movie.title }</h1>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12 pt-3 pb-5 text-center">
+                        { children }
                     </div>
                 </div>
                 <div className="row">
@@ -104,7 +109,7 @@ const MovieDetails = ({ children, movie }) => {
                     </div>
                 </div>
 
-                <div className="row">
+                <div className="row pt-5">
                     <div className={`${ showAllCast ? 'col-12' : 'col-6'}`}>
                         <span className={ styles.movieAttrLabel}>
                             Sinopsis

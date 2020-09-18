@@ -20,7 +20,7 @@
 }
 
 .btnPrimary {
-    composes: btnPrimary from '../../../ui/styles/_buttons.scss';
+    composes: btnPrimary from '../../../ui/styles/buttons.module.scss';
     border-radius: 20px;
     height: 40px;
     width: 180px;

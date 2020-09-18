@@ -47,6 +47,47 @@ class TmdbUtils {
                 }
             })
     }
+
+    normalizeMovieDetails(tmdbResult) {
+        const cast = tmdbResult.credits.cast
+            .filter(castMember => castMember.profile_path)
+            .map(castMember => {
+                return {
+                    id: castMember.id,
+                    name: castMember.name,
+                    character: castMember.character,
+                    picture_url: castMember.profile_path
+                }
+            })
+
+        const crew = tmdbResult.credits.crew
+            .filter(crewMember => crewMember.job.includes('Director'))
+            .map(crewMember => {
+                return {
+                    id: crewMember.id,
+                    name: crewMember.name,
+                    job: crewMember.job,
+                    department: crewMember.department,
+                    picture_url: crewMember.profile_path
+                }
+            })
+
+        return {
+            id: tmdbResult.id,
+            tmdb_id: tmdbResult.id,
+            title: tmdbResult.title,
+            original_title: tmdbResult.original_title,
+            release_date: tmdbResult.release_date,
+            runtime: tmdbResult.runtime,
+            synopsis: tmdbResult.overview,
+            rating: tmdbResult.vote_average,
+            poster_path: tmdbResult.poster_path,
+            backdrop_path: tmdbResult.backdrop_path,
+            genres: tmdbResult.genres,
+            cast,
+            crew
+        }
+    }
 }
 
 class TmdbClient {
@@ -126,7 +167,31 @@ class TmdbClient {
             })
     }
 
-    
+    getMovieDetails(tmdbId, onResult, onError) {
+        this.axiosInstance
+            .get(`movie/${ tmdbId }`, {
+                params: {
+                    api_key: this.apiKey,
+                    append_to_response: 'credits'
+                }
+            })
+            .then(res => {
+                if (res.status === 200) {
+                    const movie = this
+                        .tmdbUtils
+                        .normalizeMovieDetails(res.data)
+                    
+                    onResult(movie)
+                } else {
+                    console.error(res)
+                    onError()
+                }
+            })
+            .catch(err => {
+                console.error(err)
+                onError()
+            })
+    }
 }
 
 export default new TmdbClient()

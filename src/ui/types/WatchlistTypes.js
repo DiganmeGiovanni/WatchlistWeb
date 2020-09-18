@@ -33,6 +33,7 @@ export const movieType = PropTypes.shape({
     synopsis: PropTypes.string,
     rating: PropTypes.number,
     poster_path: PropTypes.string.isRequired,
+    backdrop_path: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(genreType),
 })
 
