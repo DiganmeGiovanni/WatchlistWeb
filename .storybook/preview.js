@@ -1,7 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.css'
 import '@fortawesome/fontawesome-free/css/all.css'
-import '../src/sass/watchlist.scss'
+import '../src/ui/styles/global.scss'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

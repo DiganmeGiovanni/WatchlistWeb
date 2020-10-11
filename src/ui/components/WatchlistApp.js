@@ -5,6 +5,9 @@ import {
     SidebarContainer,
     ContentContainer
 } from './layout/LayoutContainers'
+import Sidebar from './sidebar/Sidebar'
+
+import '../styles/global.scss'
 
 const WatchlistApp = () => {
     const [mobileSidebarActive, setMobileSidebarActive] = useState(false)
@@ -13,7 +16,10 @@ const WatchlistApp = () => {
         <SidebarContainer
             mobileSidebarActive={ mobileSidebarActive }
             setMobileSidebarActive={ setMobileSidebarActive }
-        />
+        >
+            <Sidebar/>
+        </SidebarContainer>
+
         <ContentContainer/>
     </AppContainer>
 }
