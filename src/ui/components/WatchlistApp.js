@@ -1,23 +1,21 @@
-import React from 'react';
-import '../../sass/watchlist.scss';
-import LoginContainer from "../containers/LoginContainer";
-import ListContainer from "../containers/ListContainer";
-import SidebarContainer from "../containers/SidebarContainer";
-import { Route, Switch } from "react-router-dom";
+import React, { useState } from 'react'
 
-function WatchlistApp() {
-    return (
-        <div className="watchlist-app">
-            <SidebarContainer/>
+import {
+    AppContainer,
+    SidebarContainer,
+    ContentContainer
+} from './layout/LayoutContainers'
 
-            <div className="section-content">
-                <Switch>
-                    <Route path="/" component={ LoginContainer } exact/>
-                    <Route path="/list/:listId" component={ ListContainer }/>
-                </Switch>
-            </div>
-        </div>
-    )
+const WatchlistApp = () => {
+    const [mobileSidebarActive, setMobileSidebarActive] = useState(false)
+
+    return <AppContainer>
+        <SidebarContainer
+            mobileSidebarActive={ mobileSidebarActive }
+            setMobileSidebarActive={ setMobileSidebarActive }
+        />
+        <ContentContainer/>
+    </AppContainer>
 }
 
 export default WatchlistApp

@@ -1,0 +1,62 @@
+@import '../../styles/colors';
+
+.watchlistApp {
+    display: flex;
+    
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.content {
+    background: $blue;
+    order: 2;
+    width: calc(100% - 320px);
+}
+
+.sidebarContainer,
+.mobileSidebarContainer {
+    background: $blue_dark;
+    height: 100%;
+    order: 1;
+    width: 320px;
+}
+
+
+//
+// Mobile sidebar
+
+.mobileSidebarWrapper {
+    display: flex;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+}
+
+.mobileSidebarDeadSpace {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    order: 2;
+    width: calc(100% - 320px);
+}
+
+
+@media (max-width: 1999px) {
+    .sidebarContainer {
+        width: 280px;
+    }
+}
+
+@media (max-width: 991px) {
+    .content {
+        width: 100%;
+    }
+
+    .sidebarContainer {
+        width: 0;
+    }
+}
