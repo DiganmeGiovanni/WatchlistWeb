@@ -32,7 +32,7 @@ export const imageSizes = {
 }
 
 class TmdbUtils {
-    normalizeSearchResults(tmdbResults) {
+    normalizeMovieResults(tmdbResults) {
         return tmdbResults
             .filter(tmdbResult => tmdbResult.poster_path)
             .map(tmdbResult => {
@@ -151,10 +151,33 @@ class TmdbClient {
                 if (res.status === 200) {
                     let results = this
                         .tmdbUtils
-                        .normalizeSearchResults(
+                        .normalizeMovieResults(
                             res.data.results
                         )
                     
+                    onResults(results)
+                } else {
+                    console.error(res)
+                    onError()
+                }
+            })
+            .catch(err => {
+                console.error(err)
+                onError()
+            })
+    }
+
+    searchPopularMovies(onResults, onError) {
+        this.axiosInstance
+            .get('movie/popular', {params: { api_key: this.apiKey }})
+            .then(res => {
+                if (res.status === 200) {
+                    let results = this
+                        .tmdbUtils
+                        .normalizeMovieResults(
+                            res.data.results
+                        )
+
                     onResults(results)
                 } else {
                     console.error(res)

@@ -14,7 +14,10 @@ const MovieItem = ({ title, releaseYear, genres, posterUrl }) => {
                 ></div>
                 <div className={ styles.subtitle }>
                     <span>{ releaseYear }</span>
-                    <span className='d-none d-md-inline'> / { genresTxt }</span>
+
+                    { genresTxt && <span className='d-none d-md-inline'>
+                        &nbsp; / { genresTxt }
+                    </span> }
                 </div>
                 <div className={ styles.title }>{ title }</div>
             </div>
