@@ -1,63 +1,59 @@
 import React from 'react';
-import Greet from './greet/Greet';
-import SidebarItem from './sidebarItem/SidebarItem';
-import PropTypes from 'prop-types';
-import { listType, userType } from '../../types/WatchlistTypes';
+import PropTypes from 'prop-types'
+
+import Greet from './greet/Greet'
+import SidebarItem from './sidebarItem/SidebarItem'
+
+import { listType, userType } from '../../types/WatchlistTypes'
 import styles from './Sidebar.module.scss'
 
-const Sidebar = ({ user, lists, selectedListId, selectList, fetchLists }) => {
+
+export const SpecialItemsIds = {
+    SUGGESTIONS: -1,
+    INCOMING: -2,
+    GENRES: -3
+}
+
+const Sidebar = ({
+    user=null,
+    lists=[],
+    selectedListId,
+    selectList
+}) => {
 
     const makeExtraLinks = () => {
         return [
             <SidebarItem
                 title='Recomendaciones'
                 key='item-suggestions'
-                onClick={ () => {} }
+                active={ selectedListId === SpecialItemsIds.SUGGESTIONS }
+                onClick={ () => selectList(SpecialItemsIds.SUGGESTIONS) }
             />,
             <SidebarItem
                 title='Próximos estrenos'
                 key='item-incoming'
-                onClick={ () => {} }
+                active={ selectedListId === SpecialItemsIds.INCOMING }
+                onClick={ () => selectList(SpecialItemsIds.INCOMING) }
             />,
             <SidebarItem
                 title='Generos'
                 key='item-genres'
-                onClick={ () => {} }
+                active={ selectedListId === SpecialItemsIds.GENRES }
+                onClick={ () => selectList(SpecialItemsIds.GENRES) }
             />
-        ];
-    };
+        ]
+    }
 
     const makeListsItems = () => {
-        // if (!user) {
-        //     return [
-        //         <SidebarItem
-        //             title='Bienvenido'
-        //             active={ true }
-        //             key='item-welcome'
-        //         />
-        //     ];
-        // }
-
-        // if (lists == null) {
-        //     fetchLists(user.id);
-        //     return [
-        //         <SidebarItem
-        //             title='Bienvenido'
-        //             active={ true }
-        //             key='item-welcome'
-        //         />
-        //     ];
-        // }
-
         return lists.map((list, idx) => (
             <SidebarItem
                 title={ list.name }
                 active={ selectedListId === list.id }
                 key={`list-${ idx }`}
-                onClick={ selectList }
+                onClick={ () => selectList(list.id) }
             />
         ))
-    };
+    }
 
     const makeCreateListBtn = () => {
         return <div className='text-center pt-5'>
@@ -65,30 +61,29 @@ const Sidebar = ({ user, lists, selectedListId, selectList, fetchLists }) => {
                 Crear una lista
             </button>
         </div>
-    };
+    }
 
     return (
         <div className={ styles.sidebar }>
-            <Greet
+            { user && <Greet
                 name={ user.name }
                 pictureUrl={ user.picture }
-            />
+            />}
 
             { makeListsItems() }
-            { makeCreateListBtn() }
+            { user && makeCreateListBtn() }
             <hr className={ styles.hr }/>
             { makeExtraLinks() }
         </div>
     )
-};
+}
 
 Sidebar.propTypes = {
     user: userType,
     lists: PropTypes.arrayOf(listType),
     selectedListId: PropTypes.number,
 
-    selectList: PropTypes.func.isRequired,
-    fetchLists: PropTypes.func.isRequired
-};
+    selectList: PropTypes.func.isRequired
+}
 
-export default Sidebar;
+export default Sidebar

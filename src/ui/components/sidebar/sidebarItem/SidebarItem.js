@@ -18,7 +18,7 @@ const SidebarItem = ({ title, active=false, onClick }) => {
 
 SidebarItem.propTypes = {
     title: PropTypes.string.isRequired,
-    active: PropTypes.bool.isRequired,
+    active: PropTypes.bool,
 
     onClick: PropTypes.func.isRequired
 };

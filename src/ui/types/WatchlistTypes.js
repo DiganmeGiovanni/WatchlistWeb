@@ -5,17 +5,17 @@ export const userType = PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
-    created_at: PropTypes.string.isRequired,
-    updated_at: PropTypes.string.isRequired
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string
 });
 
 export const listType = PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     is_default_list: PropTypes.bool.isRequired,
-    created_at: PropTypes.string.isRequired,
-    updated_at: PropTypes.string.isRequired,
-    deleted: PropTypes.bool.isRequired
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string,
+    deleted: PropTypes.bool
 })
 
 export const genreType = PropTypes.shape({

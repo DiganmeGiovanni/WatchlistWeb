@@ -17,7 +17,11 @@ const WatchlistApp = () => {
             mobileSidebarActive={ mobileSidebarActive }
             setMobileSidebarActive={ setMobileSidebarActive }
         >
-            <Sidebar/>
+            <Sidebar
+                selectList={ (listId) => {
+                    console.log(`selected list id: ${listId}`)
+                }}
+            />
         </SidebarContainer>
 
         <ContentContainer/>

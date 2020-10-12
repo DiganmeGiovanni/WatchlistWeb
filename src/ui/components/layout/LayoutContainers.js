@@ -42,5 +42,4 @@ SidebarContainer.propTypes = {
 }
 
 ContentContainer.propTypes = {
-    toggleSidebarVisibility: propTypes.func.isRequired
 }
