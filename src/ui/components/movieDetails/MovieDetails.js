@@ -10,10 +10,7 @@ import styles from './MovieDetails.module.scss'
 const MovieDetails = ({ children, movie }) => {
     const [showAllCast, setShowAllCast] = useState(false)
 
-    let backdropUrl = tmdbClient.getBackdropUrlForSize(
-        movie.backdrop_path,
-        imageSizes.backdrop.w780
-    )
+    let backdropUrl = tmdbClient.getBackdropUrl(movie.backdrop_path)
 
     const runtimeHours = Math.floor(movie.runtime / 60)
     let runtimeMins = movie.runtime - runtimeHours * 60
@@ -59,59 +56,70 @@ const MovieDetails = ({ children, movie }) => {
         style={{ backgroundImage: `url(${ backdropUrl })` }}
     >
         <div className={ styles.movieDetailsWrapper }>
-            <div className="container pt-3 pb-5">
+            <div className="container px-4 pt-4 pb-5">
                 <div className="row">
-                    <div className="col-12 text-center pt-3">
+                    <div className="col-12 text-center">
                         <h1 className={ styles.header }>{ movie.title }</h1>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12 pt-3 pb-5 text-center">
+                    <div className="col-12 pt-3 pb-5">
                         { children }
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6">
-                        <p>
-                            <span className={ styles.movieAttrOnlyValue }>
-                                { runtimeStr }
-                            </span>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            <span>&nbsp;&nbsp;</span>
-
-                            <span className={ styles.movieAttrOnlyValue }>
-                                { releaseDate }
-                            </span>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            <span>&nbsp;&nbsp;</span>
-
-                            <span className={ styles.movieAttrOnlyValue }>
-                                { movie.rating }
-                                &nbsp;
-                                <span className="fas fa-star"></span>
-                            </span>
-                        </p>
-                        <p>
-                            <span className={ styles.movieAttrOnlyValue }>
-                                { genres }
-                            </span>
-                        </p>
+                    <div className="col-6 col-sm-3">
+                        <span className={ styles.movieAttrLabel }>
+                            Director
+                        </span>
+                        <br/>
+                        <span className={ styles.movieAttrValue }>
+                            { director }
+                        </span>
                     </div>
 
-                    <div className="col-6">
-                        <p>
-                            <span className={ styles.movieAttrLabel }>
-                                Director
-                            </span>
-                            <br/>
-                            <span className={ styles.movieAttrValue }>{ director }</span>
-                        </p>
+                    <div className="col-6 col-sm-3">
+                        <span className={ styles.movieAttrLabel }>
+                            Estreno
+                        </span>
+                        <br/>
+                        <span className={ styles.movieAttrValue }>
+                            { releaseDate }
+                        </span>
+                    </div>
+
+                    <div className="col-6 col-sm-3 pt-4 pt-sm-0">
+                        <span className={ styles.movieAttrLabel }>
+                            Calificación
+                        </span>
+                        <br/>
+                        <span className={ styles.movieAttrValue }>
+                            { movie.rating }
+                            &nbsp;
+                            <span className="fas fa-star"></span>
+                        </span>
+                    </div>
+
+                    <div className="col-6 col-sm-3 pt-4 pt-sm-0">
+                        <span className={ styles.movieAttrLabel }>
+                            Duración
+                        </span>
+                        <br/>
+                        <span className={ styles.movieAttrValue }>
+                            { runtimeStr }
+                        </span>
+                    </div>
+
+                    <div className="col-12 pt-5">
+                        <span className={ styles.movieAttrOnlyValue }>
+                            { genres }
+                        </span>
                     </div>
                 </div>
 
-                <div className="row pt-5">
-                    <div className={`${ showAllCast ? 'col-12' : 'col-6'}`}>
-                        <span className={ styles.movieAttrLabel}>
+                <div className="row">
+                    <div className='col-12 pt-5'>
+                        <span className={ styles.movieAttrLabel }>
                             Sinopsis
                         </span>
                         <p className={`
@@ -122,7 +130,7 @@ const MovieDetails = ({ children, movie }) => {
                         </p>
                     </div>
 
-                    <div className={`${ showAllCast ? 'col-12' : 'col-6'}`}>
+                    <div className='col-12 pt-5'>
                         <span className={ styles.movieAttrLabel }>Elenco</span>
                         <div className={`
                             pt-2

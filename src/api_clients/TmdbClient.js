@@ -128,6 +128,21 @@ class TmdbClient {
         return this.getPosterUrlForSize(path, imageWidth)
     }
 
+    getBackdropUrl(path) {
+        const vWidth = currentWidth()
+        let imageWidth = imageSizes.backdrop.original
+
+        if (vWidth < 400) {
+            imageWidth = imageSizes.backdrop.w780
+        }
+
+        if (vWidth < 1200) {
+            imageWidth = imageSizes.backdrop.w1280
+        }
+
+        return this.getBackdropUrlForSize(path, imageWidth)
+    }
+
     getPosterUrlForSize(path, size) {
         return `${ this.imagesBaseUrl }${ size }${ path }`
     }

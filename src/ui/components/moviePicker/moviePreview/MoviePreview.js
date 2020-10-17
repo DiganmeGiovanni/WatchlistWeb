@@ -55,22 +55,25 @@ const MoviePreview = ({ tmdbId, targetListName }) => {
     }
 
     return <MovieDetails movie={ movie }>
-        <button className={`btn btn-primary ${ buttonStyles.btnPrimary }`}>
-            <span className="fas fa-play"></span>
-            <span>&nbsp;&nbsp;&nbsp;</span>
+        <div className="row">
+            <div className="col px-0 px-sm-2 text-right">
+                <button className={`btn btn-primary ${ buttonStyles.btnPrimary }`}>
+                    <span className="fas fa-play"></span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
 
-            <span>Ver trailer</span>
-        </button>
-        <span>&nbsp;&nbsp;</span>
+                    <span>Ver trailer</span>
+                </button>
+            </div>
 
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        
-        <button className={`btn btn-primary ${ buttonStyles.btnPrimary }`}>
-            <span className="fas fa-plus"></span>
-            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div className="col text-left">
+                <button className={`btn btn-primary ${ buttonStyles.btnPrimary }`}>
+                    <span className="fas fa-plus"></span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
 
-            <span>Agregar a: "{ targetListName }"</span>
-        </button>
+                    <span>Agregar a ... </span>
+                </button>
+            </div>
+        </div>
     </MovieDetails>
 }
 
