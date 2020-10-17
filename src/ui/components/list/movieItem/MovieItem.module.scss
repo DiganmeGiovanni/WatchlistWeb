@@ -6,8 +6,12 @@
     cursor: pointer;
     width: 225px;
 
-    @media (max-width: 991px) {
-        width: 190px;
+    @media (max-width: 1439px) {
+        width: 180px;
+    }
+
+    @media (max-width: 1199px) {
+        width: 205px
     }
 
     @media (max-width: 767px) {
@@ -32,9 +36,14 @@
     margin-bottom: 12px;
     width: 224px;
 
-    @media (max-width: 991px) {
-        height: 272px;
-        width: 190px;
+    @media (max-width: 1439px) {
+        height: 257px;
+        width: 180px;
+    }
+
+    @media (max-width: 1199px) {
+        height: 293px;
+        width: 205px
     }
 
     @media (max-width: 767px) {

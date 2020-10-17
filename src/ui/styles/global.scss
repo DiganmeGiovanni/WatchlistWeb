@@ -20,6 +20,11 @@ html, body, #root {
     max-width: 100%;
 }
 
+.title {
+    font-size: $fs-display;
+    font-weight: bold;
+}
+
 // Login section
 // .section-login {
 //   background: $blue;

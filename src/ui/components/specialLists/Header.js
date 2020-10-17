@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Header = ({ title }) => {
     return <div className="row">
         <div className="col">
-            <h1>{ title }</h1>
+            <h1 className="title">{ title }</h1>
         </div>
     </div>
 }
