@@ -16,6 +16,7 @@
     background: $blue;
     order: 2;
     width: calc(100% - 320px);
+    overflow-y: auto;
 }
 
 .sidebarContainer,
@@ -45,7 +46,11 @@
 }
 
 
-@media (max-width: 1999px) {
+@media (max-width: 1199px) {
+    .content {
+        width: calc(100% - 280px);
+    }
+
     .sidebarContainer {
         width: 280px;
     }
