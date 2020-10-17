@@ -11,7 +11,9 @@ const SidebarItem = ({ title, active=false, onClick }) => {
         <div className={ className }
              onClick={ onClick  }
         >
-            <span className="title">{ title }</span>
+            <span className={ styles.title }>
+                { title }
+            </span>
         </div>
     )
 };
