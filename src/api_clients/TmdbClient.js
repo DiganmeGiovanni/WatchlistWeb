@@ -205,6 +205,29 @@ class TmdbClient {
             })
     }
 
+    searchIncomingMovies(onResults, onError) {
+        this.axiosInstance
+            .get('movie/upcoming', {params: { api_key: this.apiKey }})
+            .then(res => {
+                if (res.status === 200) {
+                    let results = this
+                        .tmdbUtils
+                        .normalizeMovieResults(
+                            res.data.results
+                        )
+
+                    onResults(results)
+                } else {
+                    console.error(res)
+                    onError()
+                }
+            })
+            .catch(err => {
+                console.error(err)
+                onError()
+            })
+    }
+
     getMovieDetails(tmdbId, onResult, onError) {
         this.axiosInstance
             .get(`movie/${ tmdbId }`, {

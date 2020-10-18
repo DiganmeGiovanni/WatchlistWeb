@@ -11,6 +11,7 @@ import {
     ContentContainer
 } from './layout/LayoutContainers'
 import SuggestionsList from './specialLists/suggestions/SuggestionsList'
+import IncomingList from './specialLists/incoming/IncomingList'
 
 import SidebarWithRouteListener from '../routes/SidebarWithRouteListener'
 import HomeRoute from '../routes/HomeRoute'
@@ -28,17 +29,13 @@ const WatchlistApp = () => {
                 mobileSidebarActive={ mobileSidebarActive }
                 setMobileSidebarActive={ setMobileSidebarActive }
             >
-                <SidebarWithRouteListener
-                    
-                    selectList={ (listId) => {
-                        console.log(`selected list id: ${listId}`)
-                    }}
-                />
+                <SidebarWithRouteListener/>
             </SidebarContainer>
 
             <ContentContainer>
                      <Switch>
                         <Route path='/suggestions' component={ SuggestionsList } />
+                        <Route path='/incoming' component={ IncomingList } />
 
                         <Route
                             path='/movie/:tmdbId/preview'

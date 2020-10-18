@@ -1,11 +1,12 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
-import { routeSuggestions, routeIncoming } from './RouteManager'
+import { routeSuggestions, routeIncoming, makeListRoute } from './RouteManager'
 import Sidebar, { SpecialItemsIds } from '../components/sidebar/Sidebar'
 
 const SidebarWithRouteListener = ({ selectedListId, ...props }) => {
     const location = useLocation()
+    const history = useHistory()
 
     let currentListId = selectedListId
     if (location.pathname.endsWith(routeSuggestions)) {
@@ -16,6 +17,10 @@ const SidebarWithRouteListener = ({ selectedListId, ...props }) => {
 
     return <Sidebar
         selectedListId={ currentListId }
+        selectList={(listId) => {
+            
+            history.push(makeListRoute(listId))
+        }}
         { ...props }
     />
 }
