@@ -109,20 +109,10 @@ class TmdbClient {
         const vWidth = currentWidth()
         let imageWidth = imageSizes.poster.original
 
-        if (vWidth > 767) {
+        if (vWidth >= 4151) {
+            imageWidth = imageSizes.poster.w780
+        } else {
             imageWidth = imageSizes.poster.w342
-        }
-
-        else if (vWidth > 575) {
-            imageWidth = imageSizes.poster.w154
-        }
-
-        else if (vWidth > 424) {
-            imageWidth = imageSizes.poster.w185
-        }
-
-        else {
-            imageWidth = imageSizes.poster.w154
         }
 
         return this.getPosterUrlForSize(path, imageWidth)

@@ -54,3 +54,10 @@ export const movieSearchResultType = PropTypes.shape({
     poster_path: PropTypes.string.isRequired,
     backdrop_path: PropTypes.string.isRequired
 })
+
+export const movieGridItemType = PropTypes.shape({
+    tmdb_id: PropTypes.number,
+    poster_url: PropTypes.string,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+})

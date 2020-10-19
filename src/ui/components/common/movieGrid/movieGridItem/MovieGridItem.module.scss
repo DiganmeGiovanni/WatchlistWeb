@@ -1,0 +1,29 @@
+
+.movieGridItem {
+    cursor: pointer;
+    width: 100%;
+}
+
+.poster {
+    background-size: cover;
+    background-position: center center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.56);    
+    margin: 0 auto 12px;
+
+    padding-top: calc(100% * 1.44);
+}
+
+.subtitle {
+    font-size: 0.9em;
+    margin: 0 auto 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.title {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 17px;
+}
