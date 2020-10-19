@@ -11,3 +11,7 @@ export const makeListRoute = (listId) => {
 
     return routeSuggestions
 }
+
+export const makeMoviePreviewRoute = (tmdbId) => {
+    return `/movie/${ tmdbId }/preview`
+}
