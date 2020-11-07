@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-
-import MovieItem from '../../list/movieItem/MovieItem'
-import Header from '../Header'
+import moment from 'moment'
 
 import tmdbClient from '../../../../api_clients/TmdbClient'
+
+import MovieGrid from '../../common/movieGrid/MovieGrid'
+import Header from '../../header/Header'
+
 
 const IncomingList = () => {
     const [incoming, setIncoming] = useState(null)
@@ -27,23 +29,32 @@ const IncomingList = () => {
         </div>
     </div>
 
-    const makeIncomingElements = () => <div className="row pt-4">
-        { incoming.map((movie, idx) => {
-            const releaseYear = movie.release_date.split('-')[0]
+    const makeIncomingElements = () => {
+        const movieGridItemsData = incoming.map((movie) => {
             const posterUrl = tmdbClient.getPosterUrl(movie.poster_path)
-            return <MovieItem
-                key={`suggestion-${ idx }`}
-                title={ movie.title }
-                releaseYear={ parseInt(releaseYear) }
-                genres={ [] }
-                posterUrl={ posterUrl }
+            let releaseDate = ''
+            
+            if (movie.release_date) {
+                releaseDate = moment(movie.release_date)
+                        .format('ddd,  MMM Do')
+            }
 
-                onSelect={ () => {
-                    history.push(`movie/${ movie.tmdb_id }/preview`)
-                }}
-            />
-        }) }
-    </div>
+            return {
+                tmdb_id: movie.tmdb_id,
+                poster_url: posterUrl,
+                title: movie.title,
+                subtitle: releaseDate
+            }
+        })
+
+        return <MovieGrid
+            movieGridItemsData={ movieGridItemsData }
+            onSelect={ tmdbId => {
+                history.push(`movie/${ tmdbId }/preview`)
+            }}
+        />
+
+    }
 
     return <div className="container-fluid p-3 p-lg-4">
         <Header title='Próximos estrenos'/>

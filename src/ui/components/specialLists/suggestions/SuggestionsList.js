@@ -5,6 +5,7 @@ import tmdbClient from '../../../../api_clients/TmdbClient'
 import { makeMoviePreviewRoute } from '../../../routes/RouteManager'
 
 import MovieGrid from '../../common/movieGrid/MovieGrid'
+import Header from '../../header/Header'
 
 
 const SuggestionsList = () => {
@@ -48,8 +49,8 @@ const SuggestionsList = () => {
         />
     }
 
-    return <div className="p-3 p-lg-4">
-        <h1>Sugerencias</h1>
+    return <div className="container-fluid p-3 p-lg-4">
+        <Header title='Sugerencias'/>
 
         { suggestions
             ? makeSuggestions()
