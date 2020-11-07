@@ -1,0 +1,55 @@
+@import '../../styles/colors';
+@import '../../styles/sizes';
+
+.headerBar {
+    align-items: center;
+    display: flex;
+}
+
+.titleContainer {
+    flex-grow: 1;
+}
+
+.title {
+    font-size: $fs-display;
+    font-weight: bold;
+}
+
+.searchBar {
+    background: $blue_dark;
+    border-radius: 4px;
+    align-items: center;
+    flex-grow: 1;
+    border-bottom: 1px solid $yellow_dark;
+    display: flex;
+    height: 38px;
+    padding: 0 8px;
+}
+
+.inpSearch {
+    background: $blue_dark;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    border: none;
+    color: $white;
+    flex-grow: 1;
+    font-size: $fs-big;
+    height: 100%;
+    outline: none;
+
+    &::placeholder {
+        color: $gray_light
+    }
+}
+
+.toolbarBtn {
+    color: $yellow;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-left: 24px;
+}
+
+.closeSearchBtn {
+    composes: toolbarBtn;
+    color: $red
+}
