@@ -5,7 +5,7 @@ import tmdbClient from '../../../../api_clients/TmdbClient'
 import { makeMoviePreviewRoute } from '../../../routes/RouteManager'
 
 import MovieGrid from '../../common/movieGrid/MovieGrid'
-import Header from '../../header/Header'
+import Header from '../../common/header/Header'
 
 
 const SuggestionsList = () => {

@@ -5,7 +5,7 @@ import moment from 'moment'
 import tmdbClient from '../../../../api_clients/TmdbClient'
 
 import MovieGrid from '../../common/movieGrid/MovieGrid'
-import Header from '../../header/Header'
+import Header from '../../common/header/Header'
 
 
 const IncomingList = () => {
