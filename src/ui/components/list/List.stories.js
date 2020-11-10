@@ -366,19 +366,19 @@ const hasMovies = [
     }
 ]
 
-export const Default = () => <List
+export const EmptyList = () => <List
     isFetching={ false }
     listTitle='Western'
     hasMovies={ [] }
 />
 
-export const Loading = () => <List
+export const LoadingContent = () => <List
     isFetching={ true }
     listTitle='Western'
     hasMovies={ [] }
 />
 
-export const Content = () => <List
+export const Default = () => <List
     isFetching={ false }
     listTitle='Random movies'
     hasMovies={ hasMovies }
