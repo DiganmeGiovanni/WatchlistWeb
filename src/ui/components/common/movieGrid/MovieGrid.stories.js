@@ -3,59 +3,59 @@ import MovieGrid from './MovieGrid'
 
 export default {
     component: MovieGrid,
-    title: 'MovieGrid'
+    title: 'Common/Movie grid'
 }
 
 const movieGridItemList = [
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello asdf asdf asdf asdf adf",
-        subtitle: "Worldadfadf aadfadsf asdfasdf asdfasdf"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie with a very very very very long title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some very very very very very very long subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     },
     {
-        image_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
-        title: "Hello",
-        subtitle: "World"
+        poster_url: 'https://image.tmdb.org/t/p/w342/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg',
+        title: "Movie title",
+        subtitle: "Some subtitle"
     }
 ]
 

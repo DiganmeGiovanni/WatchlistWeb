@@ -3,7 +3,7 @@ import IncomingList from './IncomingList'
 
 export default {
     component: IncomingList,
-    title: 'Upcoming'
+    title: 'Lists/Upcoming'
 }
 
 export const Default = () => <IncomingList/>

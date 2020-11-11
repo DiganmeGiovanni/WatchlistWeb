@@ -3,7 +3,7 @@ import MoviePreview from './MoviePreview'
 
 export default {
     component: MoviePreview,
-    title: 'Movie Preview'
+    title: 'Movie details/Preview'
 }
 
 export const Interstellar = () => <MoviePreview

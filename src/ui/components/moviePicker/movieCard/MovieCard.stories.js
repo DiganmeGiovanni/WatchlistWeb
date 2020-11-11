@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 
 export default {
     component: MovieCard,
-    title: 'Movie Card'
+    title: 'Movie Picker/Movie card'
 }
 
 const movieSearchResult = {

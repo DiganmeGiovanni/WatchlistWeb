@@ -3,7 +3,7 @@ import List from './List'
 
 export default {
     component: List,
-    title: 'List'
+    title: 'Lists/User\'s list'
 }
 
 const hasMovies = [
@@ -378,7 +378,7 @@ export const LoadingContent = () => <List
     hasMovies={ [] }
 />
 
-export const Default = () => <List
+export const WithContent = () => <List
     isFetching={ false }
     listTitle='Random movies'
     hasMovies={ hasMovies }

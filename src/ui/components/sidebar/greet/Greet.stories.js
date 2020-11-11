@@ -4,11 +4,9 @@ import Greet from './Greet'
 
 export default {
     component: Greet,
-    title: 'Sidebar greet',
+    title: 'Sidebar/Greet',
 
     excludeStories: /.*Data$/
 }
 
-export const Default = () => <Greet
-    name='Giovanni'
-/>
+export const Default = () => <Greet name='Giovanni'/>

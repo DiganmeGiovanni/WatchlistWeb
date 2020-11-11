@@ -3,7 +3,7 @@ import SuggestionsList from './SuggestionsList'
 
 export default {
     component: SuggestionsList,
-    title: 'Suggestions'
+    title: 'Lists/Suggestions'
 }
 
 export const Default = () => <SuggestionsList/>

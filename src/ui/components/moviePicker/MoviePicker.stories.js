@@ -3,11 +3,11 @@ import MoviePicker from './MoviePicker'
 
 export default {
     component: MoviePicker,
-    title: 'Movie Picker'
+    title: 'Movie Picker/Picker'
 }
 
 export const Default = () => <MoviePicker
-    title='Agregar a: Favorites'
+    title='Agregar a: Favoritos'
     onMovieSelected={ () => {
         console.log('Movie selected')
     }}

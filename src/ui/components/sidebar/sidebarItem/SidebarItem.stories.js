@@ -5,7 +5,7 @@ import SidebarItem from './SidebarItem'
 
 export default {
     component: SidebarItem,
-    title: 'Sidebar item',
+    title: 'Sidebar/Sidebar item',
 
     excludeStories: /.*Data$/
 }

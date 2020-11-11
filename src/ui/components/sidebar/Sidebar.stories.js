@@ -5,7 +5,7 @@ import Sidebar from './Sidebar'
 
 export default {
     component: Sidebar,
-    title: 'Sidebar',
+    title: 'Sidebar/Sidebar',
 
     excludeStories: /.*Data$/
 }
@@ -39,7 +39,7 @@ const lists = [
     }
 ]
 
-export const Default = () => <Sidebar
+export const NonAuthenticated = () => <Sidebar
     selectList={ (list) => {} }
 />
 
