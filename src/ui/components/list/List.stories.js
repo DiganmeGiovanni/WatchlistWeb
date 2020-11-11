@@ -368,18 +368,18 @@ const hasMovies = [
 
 export const EmptyList = () => <List
     isFetching={ false }
-    listTitle='Western'
+    title='Western'
     hasMovies={ [] }
 />
 
 export const LoadingContent = () => <List
     isFetching={ true }
-    listTitle='Western'
+    title='Western'
     hasMovies={ [] }
 />
 
 export const WithContent = () => <List
     isFetching={ false }
-    listTitle='Random movies'
+    title='Random movies'
     hasMovies={ hasMovies }
 />

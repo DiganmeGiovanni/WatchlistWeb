@@ -12,7 +12,7 @@ import MovieGrid from '../common/movieGrid/MovieGrid'
 import tmdbClient from '../../../api_clients/TmdbClient'
 
 
-const List = ({ listTitle, isFetching, hasMovies }) => {
+const List = ({ title, isFetching, hasMovies }) => {
     const [filter, setFilter] = useState('')
 
     const makeContent = () => {
@@ -88,7 +88,7 @@ const List = ({ listTitle, isFetching, hasMovies }) => {
 
     return <div className="container-fluid p-3 p-lg-4">
         <HeaderWSearch
-            title={ listTitle }
+            title={ title }
             filter={ filter }
             onFilterChange={ filter => setFilter(filter) }
         >
@@ -113,8 +113,8 @@ const List = ({ listTitle, isFetching, hasMovies }) => {
 }
 
 List.propTypes = {
+    title: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    listTitle: PropTypes.string.isRequired,
     hasMovies: PropTypes.arrayOf(hasMovieType)
 }
 
