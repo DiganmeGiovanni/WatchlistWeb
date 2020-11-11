@@ -6,6 +6,7 @@ import tmdbClient from '../../../../api_clients/TmdbClient'
 
 import MovieGrid from '../../common/movieGrid/MovieGrid'
 import Header from '../../common/header/Header'
+import Loading from '../../common/Loading'
 
 
 const IncomingList = () => {
@@ -20,14 +21,6 @@ const IncomingList = () => {
             )
         }
     })
-
-    // TODO: Extract into utilities component (Also used in SuggestionsList)
-    const makeLoading = () => <div className="row text-center p-5">
-        <div className="col">
-            <span className='fas fa-spinner fa-spin fa-2x'></span>
-            <h4 className='pt-3'>Searching for suggestions</h4>
-        </div>
-    </div>
 
     const makeIncomingElements = () => {
         const movieGridItemsData = incoming.map((movie) => {
@@ -61,7 +54,7 @@ const IncomingList = () => {
 
         { incoming
             ? makeIncomingElements()
-            : makeLoading() }
+            : <Loading text='Searching for upcoming movies'/> }
     </div>
 }
 

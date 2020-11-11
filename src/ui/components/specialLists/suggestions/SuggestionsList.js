@@ -6,6 +6,7 @@ import { makeMoviePreviewRoute } from '../../../routes/RouteManager'
 
 import MovieGrid from '../../common/movieGrid/MovieGrid'
 import Header from '../../common/header/Header'
+import Loading from '../../common/Loading'
 
 
 const SuggestionsList = () => {
@@ -20,13 +21,6 @@ const SuggestionsList = () => {
             )
         }
     })
-
-    const makeLoading = () => <div className="row text-center p-5">
-        <div className="col">
-            <span className='fas fa-spinner fa-spin fa-2x'></span>
-            <h4 className='pt-3'>Searching for suggestions</h4>
-        </div>
-    </div>
 
     const makeSuggestions = () => {
         const movieGridItemsData = suggestions.map((movie) => {
@@ -54,7 +48,7 @@ const SuggestionsList = () => {
 
         { suggestions
             ? makeSuggestions()
-            : makeLoading() }
+            : <Loading text='Searching for suggestions'/> }
     </div>
 }
 
