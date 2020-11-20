@@ -1,0 +1,28 @@
+@import '../../../styles/colors';
+
+.videoThumb {
+    width: 100%;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.activeVideoThumb {
+    composes: videoThumb;
+    border: 2px solid $yellow;
+    padding: 8px;
+}
+
+.thumbnail {
+    background-size: cover;
+    background-position: center center;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.56);    
+    margin: 0 auto 12px;
+
+    padding-top: calc(100% / 1.78);
+}
+
+.title {
+    white-space: nowrap;
+}

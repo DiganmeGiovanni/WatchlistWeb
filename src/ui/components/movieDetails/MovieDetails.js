@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import moment from 'moment'
 
 import CastCard from './castCard/CastCard'
+import Header from '../common/header/Header'
+
+import styles from './MovieDetails.module.scss'
 
 import { movieType } from '../../types/WatchlistTypes'
 import tmdbClient, { imageSizes } from '../../../api_clients/TmdbClient'
-import styles from './MovieDetails.module.scss'
 
 const MovieDetails = ({ children, movie }) => {
     const [showAllCast, setShowAllCast] = useState(false)
@@ -59,6 +61,7 @@ const MovieDetails = ({ children, movie }) => {
             <div className="container px-4 pt-4 pb-5">
                 <div className="row">
                     <div className="col-12 text-center">
+                        {/* <Header title={ movie.title }/> */}
                         <h1 className={ styles.header }>{ movie.title }</h1>
                     </div>
                 </div>
