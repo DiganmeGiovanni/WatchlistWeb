@@ -13,9 +13,10 @@ import {
 import SuggestionsList from './specialLists/suggestions/SuggestionsList'
 import IncomingList from './specialLists/incoming/IncomingList'
 
-import SidebarWithRouteListener from '../routes/SidebarWithRouteListener'
+import RoutableSidebar from '../routableComponents/RoutableSidebar'
 import HomeRoute from '../routes/HomeRoute'
-import MoviePreviewRoute from './moviePicker/moviePreview/MoviePreviewRoute'
+import RoutableMoviePreview from '../routableComponents/RoutableMoviePreview'
+import RoutableTrailerPlayer from '../routableComponents/RoutableTrailerPlayer'
 
 import '../styles/global.scss'
 
@@ -29,7 +30,7 @@ const WatchlistApp = () => {
                 mobileSidebarActive={ mobileSidebarActive }
                 setMobileSidebarActive={ setMobileSidebarActive }
             >
-                <SidebarWithRouteListener/>
+                <RoutableSidebar/>
             </SidebarContainer>
 
             <ContentContainer>
@@ -39,7 +40,12 @@ const WatchlistApp = () => {
 
                         <Route
                             path='/movie/:tmdbId/preview'
-                            component={ MoviePreviewRoute }
+                            component={ RoutableMoviePreview }
+                        />
+
+                        <Route
+                            path='/movie/:tmdbId/trailer'
+                            component={ RoutableTrailerPlayer }
                         />
 
                         <Route path='/' component={ HomeRoute }/>

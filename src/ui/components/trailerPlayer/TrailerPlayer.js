@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Youtube from 'react-youtube'
 
 import ytClient from '../../../api_clients/YoutubeClient'
@@ -9,7 +10,7 @@ import VideoThumbnail from './thumbnail/VideoThumbnail'
 
 import styles from './TrailerPlayer.module.scss'
 
-const TrailerPlayer = ({ tmdbId, title }) => {
+const TrailerPlayer = ({ title, onBackClicked }) => {
     const [ytResults, setYtResults] = useState(null)
     const [activeVideoId, setActiveVideoId] = useState(null)
     const [playerHeight, setPlayerHeight] = useState(0)
@@ -65,7 +66,10 @@ const TrailerPlayer = ({ tmdbId, title }) => {
     </div>
 
     return <div className='container-fuid p-3 p-lg-4'>
-        <Header title={`Trailer: ${ title }`} />
+        <Header
+            title={`Trailer: ${ title }`}
+            onBackClicked={ onBackClicked }
+        />
         
         <div className="row">
             <div className="col-12">
@@ -90,6 +94,12 @@ const TrailerPlayer = ({ tmdbId, title }) => {
 
         { !ytResults && <Loading text='Searching for trailers'/> }
     </div>
+}
+
+TrailerPlayer.propTypes = {
+    tmdbId: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    onBackClicked: PropTypes.func.isRequired
 }
 
 export default TrailerPlayer

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-import { routeSuggestions, routeIncoming, makeListRoute } from './RouteManager'
+import { routeSuggestions, routeIncoming, makeListRoute } from '../routes/RouteManager'
 import Sidebar, { SpecialItemsIds } from '../components/sidebar/Sidebar'
 
-const SidebarWithRouteListener = ({ selectedListId, ...props }) => {
+const RoutableSidebar = ({ selectedListId, ...props }) => {
     const location = useLocation()
     const history = useHistory()
 
@@ -25,4 +25,4 @@ const SidebarWithRouteListener = ({ selectedListId, ...props }) => {
     />
 }
 
-export default SidebarWithRouteListener
+export default RoutableSidebar

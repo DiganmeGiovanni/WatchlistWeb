@@ -7,7 +7,7 @@ import MovieDetails from '../../movieDetails/MovieDetails'
 import styles from './MoviePreview.module.scss'
 import buttonStyles from '../../../styles/buttons.module.scss'
 
-const MoviePreview = ({ tmdbId, targetListName }) => {
+const MoviePreview = ({ tmdbId, onPlayTrailerClicked, onAddToListClicked }) => {
     const [isFetching, setFetching] = useState(true)
     const [movie, setMovie] = useState(null)
 
@@ -57,7 +57,10 @@ const MoviePreview = ({ tmdbId, targetListName }) => {
     return <MovieDetails movie={ movie }>
         <div className="row">
             <div className="col px-0 px-sm-2 text-right">
-                <button className={`btn btn-primary ${ buttonStyles.btnPrimary }`}>
+                <button
+                    className={`btn btn-primary ${ buttonStyles.btnPrimary }`}
+                    onClick={ () => { onPlayTrailerClicked(movie.title) }}
+                >
                     <span className="fas fa-play"></span>
                     <span>&nbsp;&nbsp;&nbsp;</span>
 
@@ -66,7 +69,10 @@ const MoviePreview = ({ tmdbId, targetListName }) => {
             </div>
 
             <div className="col text-left">
-                <button className={`btn btn-primary ${ buttonStyles.btnPrimary }`}>
+                <button
+                    className={`btn btn-primary ${ buttonStyles.btnPrimary }`}
+                    onClick={ () => { onAddToListClicked() }}
+                >
                     <span className="fas fa-plus"></span>
                     <span>&nbsp;&nbsp;&nbsp;</span>
 
@@ -79,7 +85,8 @@ const MoviePreview = ({ tmdbId, targetListName }) => {
 
 MoviePreview.propTypes = {
     tmdbId: PropTypes.number.isRequired,
-    targetListName: PropTypes.string.isRequired,
+    onPlayTrailerClicked: PropTypes.func.isRequired,
+    onAddToListClicked: PropTypes.func.isRequired
 }
 
 export default MoviePreview

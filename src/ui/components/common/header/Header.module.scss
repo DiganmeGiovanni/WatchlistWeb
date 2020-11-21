@@ -54,3 +54,10 @@
     composes: toolbarBtn;
     color: $red
 }
+
+.backBtn {
+    composes: toolbarBtn;
+    margin-left: 0;
+    margin-right: 16px;
+    margin-bottom: 4px;
+}
