@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 
 import CastCard from './castCard/CastCard'
@@ -9,7 +10,7 @@ import styles from './MovieDetails.module.scss'
 import { movieType } from '../../types/WatchlistTypes'
 import tmdbClient, { imageSizes } from '../../../api_clients/TmdbClient'
 
-const MovieDetails = ({ children, movie }) => {
+const MovieDetails = ({ children, movie, onBackClicked }) => {
     const [showAllCast, setShowAllCast] = useState(false)
 
     let backdropUrl = tmdbClient.getBackdropUrl(movie.backdrop_path)
@@ -59,9 +60,22 @@ const MovieDetails = ({ children, movie }) => {
     >
         <div className={ styles.movieDetailsWrapper }>
             <div className="container px-4 pt-4 pb-5">
-                <div className="row">
-                    <div className="col-12 text-center">
-                        {/* <Header title={ movie.title }/> */}
+                <div className='d-md-none'>
+                    <Header
+                        title={ movie.title }
+                        onBackClicked={ () => { onBackClicked() }}
+                    />
+                </div>
+                <div className="row d-none d-md-flex">
+                    <div className="col-1 text-center">
+                        <div
+                            className={ styles.closeBtn }
+                            onClick={ () => { onBackClicked() }}
+                        >
+                            <span className="fas fa-times"></span>
+                        </div>
+                    </div>
+                    <div className="col-10 text-center">
                         <h1 className={ styles.header }>{ movie.title }</h1>
                     </div>
                 </div>
@@ -155,7 +169,8 @@ const MovieDetails = ({ children, movie }) => {
 }
 
 MovieDetails.propTypes = {
-    movie: movieType
+    movie: movieType,
+    onBackClicked: PropTypes.func.isRequired
 }
 
 export default MovieDetails

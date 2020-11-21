@@ -17,6 +17,15 @@
     overflow-y: auto;
 }
 
+.closeBtn {
+    background: black;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+}
+
 .header {
     font-weight: bold;
 }

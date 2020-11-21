@@ -2171,4 +2171,5 @@ const fightClubMovie = {
 
 export const Default = () => <MovieDetails
     movie={ fightClubMovie }
+    onBackClicked={ () => { console.log('Going back') }}
 />

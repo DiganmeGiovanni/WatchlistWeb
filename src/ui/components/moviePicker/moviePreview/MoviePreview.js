@@ -7,7 +7,12 @@ import MovieDetails from '../../movieDetails/MovieDetails'
 import styles from './MoviePreview.module.scss'
 import buttonStyles from '../../../styles/buttons.module.scss'
 
-const MoviePreview = ({ tmdbId, onPlayTrailerClicked, onAddToListClicked }) => {
+const MoviePreview = ({
+    tmdbId,
+    onBackClicked,
+    onPlayTrailerClicked,
+    onAddToListClicked
+}) => {
     const [isFetching, setFetching] = useState(true)
     const [movie, setMovie] = useState(null)
 
@@ -54,7 +59,7 @@ const MoviePreview = ({ tmdbId, onPlayTrailerClicked, onAddToListClicked }) => {
         }
     }
 
-    return <MovieDetails movie={ movie }>
+    return <MovieDetails movie={ movie } onBackClicked={ onBackClicked }>
         <div className="row">
             <div className="col px-0 px-sm-2 text-right">
                 <button
@@ -85,6 +90,7 @@ const MoviePreview = ({ tmdbId, onPlayTrailerClicked, onAddToListClicked }) => {
 
 MoviePreview.propTypes = {
     tmdbId: PropTypes.number.isRequired,
+    onBackClicked: PropTypes.func.isRequired,
     onPlayTrailerClicked: PropTypes.func.isRequired,
     onAddToListClicked: PropTypes.func.isRequired
 }
